@@ -27,7 +27,7 @@ class WindowAtom extends Window {
 	public animation_frame:number = 0
 
 	constructor(atom:AtomSchema) {
-		super()
+		super( `Atom - ${atom.name}` )
 		this.atom = atom
 
 		this.WIDTH = (this.atom!.atomic_radius || 100)*2 + 80

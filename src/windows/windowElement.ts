@@ -6,7 +6,7 @@ class WindowElement extends Window {
 	public atom:AtomSchema
 
 	constructor(atom:AtomSchema) {
-		super()
+		super(`Element - ${atom.name}`)
 		this.atom = atom
 	}
 

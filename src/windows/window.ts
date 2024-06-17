@@ -8,7 +8,7 @@ abstract class Window {
 	private drag_position = { x:0, y:0} 
 	private before_drag_position = { x:0, y:0}
 
-	constructor() {
+	constructor(title:string) {
 		const app = document.querySelector<HTMLDivElement>('#app')!
 
 		this.div_window = document.createElement('div')
@@ -74,6 +74,11 @@ abstract class Window {
 			this.div_window.remove()
 		})
 		this.div_header.appendChild(button_close_window)
+
+		const window_label = document.createElement('p')
+		window_label.className = "window-label"
+		window_label.textContent = title
+		this.div_header.appendChild(window_label)
 	}
 
 	public abstract render(): void

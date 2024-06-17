@@ -8,7 +8,7 @@ class WindowPeriodicTable extends Window {
 	private table:HTMLDivElement
 
 	constructor() {
-		super()
+		super("Periodic Table")
 		this.table = document.createElement('div')
 		this.table.id = "periodic-table"
 
