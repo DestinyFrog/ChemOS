@@ -42,6 +42,26 @@ abstract class Window {
 				document.removeEventListener('mousemove', mouseMove) )
 		})
 
+		this.div_header.addEventListener('touchstart', ev => {
+			this.before_drag_position.x = ev.touches[0].clientX
+			this.before_drag_position.y = ev.touches[0].clientY
+
+			const mouseMove = (ev:TouchEvent) => {
+				this.drag_position.x = this.before_drag_position.x - ev.touches[0].clientX
+				this.drag_position.y = this.before_drag_position.y - ev.touches[0].clientY
+	
+				this.before_drag_position.x = ev.touches.item(0)?.clientX!
+				this.before_drag_position.y = ev.touches[0].clientY
+
+				this.div_window.style.top = `${this.div_window.offsetTop - this.drag_position.y}px`
+				this.div_window.style.left = `${this.div_window.offsetLeft - this.drag_position.x}px`
+			}
+
+			document.addEventListener('touchmove', mouseMove)
+			document.addEventListener('touchend', _ =>
+				document.removeEventListener('touchmove', mouseMove) )
+		})
+
 		this.div_container = document.createElement('div')
 		this.div_container.className = "window-container"
 		app.appendChild(this.div_container)

@@ -6,14 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-	"start": "tsc && vite build && node server.js",
+    "start": "tsc && vite build && node server.js",
     "preview": "vite preview"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  },
-  "dependencies": {
-    "@shopify/draggable": "^1.1.3"
   }
 }
