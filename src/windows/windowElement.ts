@@ -1,42 +1,28 @@
-import Window from "../window"
+import Atom from "../functions/Atom"
+import Window from "./window"
+import WindowAtom from "./windowAtom"
 
 class WindowElement extends Window {
-	public atom:AtomSchema|null = null
+	public atom:AtomSchema
+
+	constructor(atom:AtomSchema) {
+		super()
+		this.atom = atom
+	}
 
 	public render() {
-		// TODO: do something if atom is null
-
 		const parameters_list =`
 		<div class="element-container">
 			<p class="item item-number">${this.atom?.number}</p>
 			<p class="item item-symbol">${this.atom?.symbol}</p>
 			<p class="item item-name">${this.atom?.name}</p>
+			<p class="item item-name">${this.atom?.category}</p>
 			<p class="item item-mass">${this.atom?.atomic_mass}</p>
-		</div>
-		`
-
+		</div>`
 		this.div_container.innerHTML = parameters_list
 	}
 
-	private async searchFor(atom_txt:string) {
-		console.log(atom_txt)
-
-		fetch('/data.json')
-		.then(resp => resp.json())
-		.then((data:Array<AtomSchema>) => {
-			const f = data.filter(d => d.symbol == atom_txt)
-
-			if (f.length == 0)
-				throw new Error('No Atom Found With this Symbol')
-
-			this.atom = f[0]
-			this.render()
-		})
-		.catch(error => {
-			// TODO: do something with error
-			throw error
-		})
-	}
+	public destroy(): void {}
 
 	static dialog_search(): HTMLDialogElement {
 		const searchDialog = document.createElement('dialog')
@@ -51,11 +37,24 @@ class WindowElement extends Window {
 
 		const submitButton = document.createElement('button')
 		submitButton.textContent = 'Search'
-		submitButton.addEventListener('click', _ => {
-			// TODO: Return error if input is 'null'
-			const atom_txt = input.value
-			const window = new WindowElement()
-			window.searchFor(atom_txt)
+		submitButton.addEventListener('click', async (_) => {
+			try {
+				// TODO: Return error if input is 'null'
+				const atom_txt = input.value
+
+				const atoms: AtomSchema[] = await Atom.search_atom(atom_txt)
+
+				const w1 = new WindowElement(atoms[0])
+				w1.render()
+
+				const w2 = new WindowAtom(atoms[0])
+				w2.render()
+			}
+			catch (err) {
+				// TODO: Treat error if find nothing
+				throw err
+			}
+
 			searchDialog.remove()
 		})
 

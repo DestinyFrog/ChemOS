@@ -1,0 +1,15 @@
+
+#periodic-table {
+	display: grid;
+	margin: 5px;
+
+	gap: 2px;
+}
+
+.periodic-table-element {
+	padding: 4px;
+	border: 1px solid aliceblue;
+
+	height: 30px;
+	aspect-ratio: 1/1;
+}

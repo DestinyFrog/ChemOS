@@ -45,6 +45,7 @@
 	},
 	{
 		"name": "Helium",
+		"atomic_radius": 31,
 		"appearance": "colorless gas, exhibiting a red-orange glow when placed in a high-voltage electric field",
 		"atomic_mass": 4.0026022,
 		"boil": 4.222,
@@ -89,7 +90,7 @@
 	},
 	{
 		"name": "Lithium",
-		"atomic_radius": 152,
+		"atomic_radius": 167,
 		"appearance": "silvery-white",
 		"atomic_mass": 6.94,
 		"boil": 1603,
@@ -184,6 +185,7 @@
 	},
 	{
 		"name": "Boron",
+		"atomic_radius": 87,
 		"appearance": "black-brown",
 		"atomic_mass": 10.81,
 		"boil": 4200,
@@ -232,7 +234,7 @@
 	},
 	{
 		"name": "Carbon",
-		"atomic_radius": 70,
+		"atomic_radius": 67,
 		"appearance": null,
 		"atomic_mass": 12.011,
 		"boil": null,
@@ -282,6 +284,7 @@
 	},
 	{
 		"name": "Nitrogen",
+		"atomic_radius": 56,
 		"appearance": "colorless gas, liquid or solid",
 		"atomic_mass": 14.007,
 		"boil": 77.355,
@@ -332,7 +335,7 @@
 	},
 	{
 		"name": "Oxygen",
-		"atomic_radius": 60,
+		"atomic_radius": 48,
 		"appearance": null,
 		"atomic_mass": 15.999,
 		"boil": 90.188,
@@ -603,6 +606,7 @@
 	},
 	{
 		"name": "Aluminium",
+		"atomic_radius": 143,
 		"appearance": "silvery gray metallic",
 		"atomic_mass": 26.98153857,
 		"boil": 2743,
@@ -660,6 +664,7 @@
 	},
 	{
 		"name": "Silicon",
+		"atomic_radius": 111,
 		"appearance": "crystalline, reflective with bluish-tinged faces",
 		"atomic_mass": 28.085,
 		"boil": 3538,
@@ -1157,6 +1162,7 @@
 	},
 	{
 		"name": "Titanium",
+		"atomic_radius": 147,
 		"appearance": "silvery grey-white metallic",
 		"atomic_mass": 47.8671,
 		"boil": 3560,
@@ -4332,6 +4338,7 @@
 	},
 	{
 		"name": "Mercury",
+		"atomic_radius": 150,
 		"appearance": "silvery",
 		"atomic_mass": 200.5923,
 		"boil": 629.88,
@@ -4931,6 +4938,7 @@
 	},
 	{
 		"name": "Uranium",
+		"atomic_radius": 175,
 		"appearance": null,
 		"atomic_mass": 238.028913,
 		"boil": 4404,
