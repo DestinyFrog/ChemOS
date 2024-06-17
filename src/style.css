@@ -29,6 +29,7 @@ body {
 	height: 100vh;
 
 	overscroll-behavior-block: contain;
+	overscroll-behavior-y: none;
 }
 
 header {
