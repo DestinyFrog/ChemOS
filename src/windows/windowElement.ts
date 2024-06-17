@@ -8,6 +8,8 @@ class WindowElement extends Window {
 	constructor(atom:AtomSchema) {
 		super(`Element - ${atom.name}`)
 		this.atom = atom
+		this.div_container.style.backgroundColor = Atom.type_to_color(atom)
+		console.log(atom.category)
 	}
 
 	public render() {
@@ -16,7 +18,6 @@ class WindowElement extends Window {
 			<p class="item item-number">${this.atom?.number}</p>
 			<p class="item item-symbol">${this.atom?.symbol}</p>
 			<p class="item item-name">${this.atom?.name}</p>
-			<p class="item item-name">${this.atom?.category}</p>
 			<p class="item item-mass">${this.atom?.atomic_mass}</p>
 		</div>`
 		this.div_container.innerHTML = parameters_list

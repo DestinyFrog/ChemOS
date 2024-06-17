@@ -28,10 +28,18 @@ class Atom {
 
 	public static type_to_color(atom:AtomSchema): string {
 		switch(atom.category) {
-			case 'noble gas': return '#8C16E0'
-
-			default:
-				return ''
+			case 'noble gas': return '#9400d3'
+			case 'alkali metal': return '#e5b80b'
+			case 'alkaline earth metal': return '#FF6600'
+			case 'metalloid': return '#8db600'
+			case 'nonmetal': return '#008000'
+			case 'hydrogen': return '#aaddaa'
+			case 'transition metal': return '#970700'
+			case 'post-transition metal': return '#ff007f'
+			case 'lanthanide': return '#054f77'
+			case 'actinide': return '#4169e1'
+			case 'unknown': return '#333333'
+			default: return '#000000'
 		}
 	}
 }
