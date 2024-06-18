@@ -1,24 +1,27 @@
 import Atom from "../functions/Atom"
 import Window from "./window"
 import WindowAtom from "./windowAtom"
+import './windowElement.css'
 
 class WindowElement extends Window {
-	public atom:AtomSchema
+	public atom:atom_schema
 
-	constructor(atom:AtomSchema) {
-		super(`Element - ${atom.name}`)
+	constructor(atom:atom_schema) {
+		super(`${atom.name}`)
 		this.atom = atom
 		this.div_container.style.backgroundColor = Atom.type_to_color(atom)
-		console.log(atom.category)
 	}
 
 	public render() {
 		const parameters_list =`
 		<div class="element-container">
-			<p class="item item-number">${this.atom?.number}</p>
-			<p class="item item-symbol">${this.atom?.symbol}</p>
-			<p class="item item-name">${this.atom?.name}</p>
-			<p class="item item-mass">${this.atom?.atomic_mass}</p>
+		<div class="item">
+			<p class="item-number">${this.atom?.number}</p>
+			<p class="item-symbol">${this.atom?.symbol}</p>
+			<p class="item-name">${this.atom?.name}</p>
+			<p class="item-mass">${this.atom?.atomic_mass}</p>
+			</div>
+			<p class="item-shells">${this.atom?.shells.join('</br>')}</p>
 		</div>`
 		this.div_container.innerHTML = parameters_list
 	}
@@ -43,7 +46,7 @@ class WindowElement extends Window {
 				// TODO: Return error if input is 'null'
 				const atom_txt = input.value
 
-				const atoms: AtomSchema[] = await Atom.search_atom(atom_txt)
+				const atoms: atom_schema[] = await Atom.search_atom(atom_txt)
 
 				const w1 = new WindowElement(atoms[0])
 				w1.render()

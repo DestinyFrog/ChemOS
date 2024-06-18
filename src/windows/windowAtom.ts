@@ -4,7 +4,7 @@ import './windowAtom.css'
 const CIRCUFERENCE = Math.PI*2
 
 class WindowAtom extends Window {
-	public atom:AtomSchema
+	public atom:atom_schema
 	public WIDTH:number
 	public HEIGHT:number
 	public CENTER:{x:number, y:number}
@@ -26,9 +26,11 @@ class WindowAtom extends Window {
 
 	public animation_frame:number = 0
 
-	constructor(atom:AtomSchema) {
+	constructor(atom:atom_schema) {
 		super( `Atom - ${atom.name}` )
 		this.atom = atom
+
+		console.log(atom)
 
 		this.WIDTH = (this.atom!.atomic_radius || 100)*2 + 80
 		this.HEIGHT = (this.atom!.atomic_radius || 100)*2 + 80

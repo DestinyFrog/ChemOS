@@ -1,0 +1,38 @@
+
+.element-container {
+	display: flex;
+	flex-direction: row;
+
+	width: 130px;
+
+	padding: 6px;
+}
+
+.item {
+	width: 100%;
+}
+
+.item-number {
+	text-align: start;
+	font-size: large;
+}
+
+.item-symbol {
+	text-align: center;
+	font-size: xx-large;
+}
+
+.item-mass {
+	text-align: center;
+	font-size: small;
+}
+
+.item-distribution {
+	max-width: 10%;
+	text-wrap: wrap;
+}
+
+.item-shells {
+	width: min-content;
+	font-size: xx-small;
+}

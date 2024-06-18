@@ -1,9 +1,9 @@
 
 class Atom {
-	public static async get_all(): Promise<AtomSchema[]> {
+	public static async get_all(): Promise<atom_schema[]> {
 		try {
 			const response = await fetch('/data.json')
-			const data:AtomSchema[] = await response.json()
+			const data:atom_schema[] = await response.json()
 			return data
 		}
 		catch (error) {
@@ -11,10 +11,10 @@ class Atom {
 		}
 	}
 
-	public static async search_atom(term:string): Promise<AtomSchema[]> {
+	public static async search_atom(term:string): Promise<atom_schema[]> {
 		try {
 			const response = await fetch('/data.json')
-			const data:AtomSchema[] = await response.json()
+			const data:atom_schema[] = await response.json()
 			const f = data.filter(d => d.symbol == term)
 
 			if (f.length == 0)
@@ -26,7 +26,7 @@ class Atom {
 		}
 	}
 
-	public static type_to_color(atom:AtomSchema): string {
+	public static type_to_color(atom:atom_schema): string {
 		switch(atom.category) {
 			case 'noble gas': return '#9400d3'
 			case 'alkali metal': return '#e5b80b'

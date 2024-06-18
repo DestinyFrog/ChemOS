@@ -1,5 +1,5 @@
 import WindowElement from "./windows/windowElement"
-import WindowPeriodicTable from './windows/windowPeriodic'
+import WindowPeriodicTable from './windows/windowPeriodicTable'
 
 class Header {
 	public static draw(app:HTMLDivElement) {

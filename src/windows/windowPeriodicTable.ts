@@ -27,13 +27,13 @@ class WindowPeriodicTable extends Window {
 			div.style.backgroundColor = Atom.type_to_color(atom)
 
 			div.addEventListener('click', async _ => {
-				const atoms: AtomSchema[] = await Atom.search_atom(atom.symbol)
-	
-				const w1 = new WindowElement(atoms[0])
-				w1.render()
+				const atoms: atom_schema[] = await Atom.search_atom(atom.symbol)
 
 				const w2 = new WindowAtom(atoms[0])
 				w2.render()
+
+				const w1 = new WindowElement(atoms[0])
+				w1.render()
 			})
 
 			this.table.appendChild(div)
