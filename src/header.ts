@@ -1,4 +1,5 @@
 import WindowElement from "./windows/windowElement"
+import WindowsLinusPauling from "./windows/windowLinusPauling"
 import WindowPeriodicTable from './windows/windowPeriodicTable'
 
 class Header {
@@ -20,6 +21,14 @@ class Header {
 			search_draw_atom.render()
 		})
 		header.appendChild(button_periodic_table)
+
+		const button_linus_pauling = document.createElement('button')
+		button_linus_pauling.textContent = 'Diagrama de Linus Pauling'
+		button_linus_pauling.addEventListener('click', _ => {
+			const search_draw_atom = new WindowsLinusPauling(null)
+			search_draw_atom.render()
+		})
+		header.appendChild(button_linus_pauling)
 	}
 }
 

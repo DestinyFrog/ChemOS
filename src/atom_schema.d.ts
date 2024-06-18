@@ -1,3 +1,4 @@
+
 interface atom_schema {
 	name: string;
 	atomic_radius?: number;
