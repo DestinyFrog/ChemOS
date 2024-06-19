@@ -13,7 +13,7 @@ interface atom_schema {
 	ypos: number;
 	shells: number[];
 	electron_configuration: string;
-	max_eletron: number | null
+	max_eletron?: number | null | undefined
 }
 
 enum ligation_type {
