@@ -1,7 +1,7 @@
-
 interface atom_schema {
 	name: string;
-	atomic_radius?: number;
+	atomic_radius: null | number;
+	eletronegativity: null | number;
 	atomic_mass: number;
 	category: string;
 	number: number;
@@ -13,4 +13,10 @@ interface atom_schema {
 	ypos: number;
 	shells: number[];
 	electron_configuration: string;
+	max_eletron: number | null
+}
+
+enum ligation_type {
+	'ionic',
+	'covalent'
 }

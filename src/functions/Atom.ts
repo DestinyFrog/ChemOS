@@ -1,3 +1,4 @@
+import all from "../data"
 
 class Atom {
 	public static async get_all(): Promise<atom_schema[]> {
@@ -11,11 +12,11 @@ class Atom {
 		}
 	}
 
-	public static async search_atom(term:string): Promise<atom_schema[]> {
+	public static search_atom(term:string): atom_schema[] {
 		try {
-			const response = await fetch('/data.json')
-			const data:atom_schema[] = await response.json()
-			const f = data.filter(d => d.symbol == term)
+			// const response = await fetch('/data.json')
+			// const data:atom_schema[] = await response.json()
+			const f = all.filter(d => d.symbol == term)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')

@@ -1,4 +1,4 @@
-[
+const all = [
 	{
 		"name": "Hydrogen",
 		"atomic_radius": 53,
@@ -15,7 +15,8 @@
 		"shells": [
 			1
 		],
-		"electron_configuration": "1s1"
+		"electron_configuration": "1s1",
+		"max_eletron": 2
 	},
 	{
 		"name": "Helium",
@@ -33,7 +34,8 @@
 		"shells": [
 			2
 		],
-		"electron_configuration": "1s2"
+		"electron_configuration": "1s2",
+		"max_eletron": 2
 	},
 	{
 		"name": "Lithium",
@@ -90,7 +92,8 @@
 			2,
 			3
 		],
-		"electron_configuration": "1s2 2s2 2p1"
+		"electron_configuration": "1s2 2s2 2p1",
+		"max_eletron": 6
 	},
 	{
 		"name": "Carbon",
@@ -2650,3 +2653,5 @@
 		"electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6 8s1"
 	}
 ]
+
+export default all

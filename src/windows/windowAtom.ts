@@ -30,8 +30,6 @@ class WindowAtom extends Window {
 		super( `Atom - ${atom.name}` )
 		this.atom = atom
 
-		console.log(atom)
-
 		this.WIDTH = (this.atom!.atomic_radius || 100)*2 + 80
 		this.HEIGHT = (this.atom!.atomic_radius || 100)*2 + 80
 		this.CENTER = { x: this.WIDTH/2, y: this.HEIGHT/2 }

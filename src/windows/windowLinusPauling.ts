@@ -34,7 +34,7 @@ class WindowsLinusPauling extends Window {
 		}
 	]
 
-	constructor(_:atom_schema|null) {
+	constructor() {
 		super("Diagrama Linus Pauling")
 
 		const canvas = document.createElement('canvas')
