@@ -46,17 +46,17 @@ class Atom {
 
 	private get_color(): string {
 		switch(this.category) {
-			case 'noble gas':				return '#9400d3'
-			case 'alkali metal':			return '#e5b80b'
-			case 'alkaline earth metal':	return '#FF6600'
-			case 'metalloid':				return '#8db600'
-			case 'nonmetal':				return '#008000'
-			case 'hydrogen':				return '#aaddaa'
-			case 'transition metal':		return '#970700'
-			case 'post-transition metal':	return '#ff007f'
-			case 'lanthanide':				return '#054f77'
-			case 'actinide':				return '#4169e1'
-			case 'unknown':					return '#333333'
+			case 'gás nobre':				return '#9400d3'
+			case 'metal alcalino':			return '#e5b80b'
+			case 'metal alcalino terroso':	return '#FF6600'
+			case 'metaloide':				return '#8db600'
+			case 'não-metal':				return '#008000'
+			case 'hidrogênio':				return '#aaddaa'
+			case 'metal de transição':		return '#970700'
+			case 'metal pós-transição':		return '#ff007f'
+			case 'lantanídeo':				return '#054f77'
+			case 'actínideo':				return '#4169e1'
+			case 'desconhecido':			return '#333333'
 			default:						return '#000000'
 		}
 	}
