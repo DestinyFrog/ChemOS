@@ -1,4 +1,4 @@
-import Atom from "../functions/Atom"
+import Atom from "../models/Atom"
 import Window from "../features/window"
 import "./windowAtom.css"
 import { CANVAS_BACKGROUND_COLOR, CIRCUFERENCE, DELAY, ELETRON_COLOR, ELETRON_LAYER_COLOR, ELETRON_RADIUS, ELETRON_SPEED, NUCLEUM_RADIUS, PROTON_COLOR, PROTON_RADIUS } from "../configuration"

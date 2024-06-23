@@ -1,4 +1,4 @@
-import Molecule from "../functions/Molecule"
+import Molecule from "../models/Molecule"
 import Window from "../features/window"
 import { CIRCUFERENCE } from "../configuration"
 

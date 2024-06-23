@@ -1,4 +1,4 @@
-import Atom from "../functions/Atom"
+import Atom from "../models/Atom"
 import Window from "../features/window"
 import './windowAtom.css'
 import * as THREE from 'three'
