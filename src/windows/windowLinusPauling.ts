@@ -38,7 +38,7 @@ class WindowsLinusPauling extends Window {
 		super("Diagrama Linus Pauling")
 
 		const canvas = document.createElement('canvas')
-		this.div_container.appendChild(canvas)
+		this.add_to_container(canvas)
 
 		this.WIDTH = this.OFFSET*2 + this.UNIT*4
 		this.HEIGHT = this.OFFSET*2 + this.UNIT*7
