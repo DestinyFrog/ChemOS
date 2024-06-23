@@ -3,7 +3,7 @@ import './window.css'
 abstract class Window {
 	private div_window:HTMLDivElement
 	private div_header:HTMLDivElement
-	protected div_container:HTMLDivElement
+	private div_container:HTMLDivElement
 
 	private drag_position = { x:0, y:0} 
 	private before_drag_position = { x:0, y:0}
@@ -83,6 +83,33 @@ abstract class Window {
 
 	public abstract render(): void
 	public abstract destroy(): void
+
+	public set_position({x, y}:{x:number, y:number}) {
+		this.div_window.style.top = `${y}px`
+		this.div_window.style.left = `${x}px`
+	}
+
+	public get_position() {
+		return {
+			x: parseFloat( this.div_window.style.left.replace('.px','') ),
+			y: parseFloat( this.div_window.style.top.replace('.px','') )
+		}
+	}
+
+	public get_size() {
+		return {
+			width: this.div_window.clientWidth,
+			height: this.div_window.clientHeight
+		}
+	}
+
+	protected add_to_container(el:HTMLElement) {
+		this.div_container.appendChild(el)
+	}
+
+	protected add_to_header(el:HTMLElement) {
+		this.div_header.appendChild(el)
+	}
 }
 
 export default Window

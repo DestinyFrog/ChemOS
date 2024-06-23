@@ -1,55 +1,55 @@
 import Atom from "./Atom"
 
-export interface Ligation {
-	p1:number
-	p2:number
+export class Ligation {
+	public eletronegativity: number
+
+	constructor (
+		public p1:Atom,
+		public p2:Atom,
+	) {
+		// TODO: Treat eletronegativity possibly 'null'
+		this.eletronegativity = p1.eletronegativity! - p2.eletronegativity!
+	}
 }
 
 class Molecule {
-	public central_atom: number
-	public atoms: atom_schema[]
-	public ligations: Ligation[]
+	// public type: ligation_type
+	public ligations: Ligation[] = Array()
 
-	constructor(formula:string) {
+	public static async split_molecule(formula:string): Promise<Atom[]> {
+		const atoms: Atom[] = Array()
 		const splited = formula.match( /[A-Z][a-z]?_?\d?/g )
 
-		this.atoms = Array()
-		this.ligations = Array()
+		if (splited == null)
+			throw new Error('Molecula Invalida')
 
-		splited?.forEach(d => {
+		for (const d of splited) {
 			let [el, n1] = d.split('_')
-			const [s] = Atom.search_atom(el)
+			var s = await Atom.search_atom(el)
 			let n = parseInt(n1) || 1
+
 			for (let i = 0; i < n; i++ )
-				this.atoms.push(s)
-		})
-
-		let max_max_eletron = 0
-		this.central_atom = 0
-		this.atoms.forEach( (d,idx) => {
-			let m = d.max_eletron || 8
-			if (max_max_eletron < m - d.shells[ d.shells.length-1 ] ) {
-				max_max_eletron = m - d.shells[ d.shells.length-1 ]
-				this.central_atom = idx
-			}
-		})
-
-		for (let i = 0; i < this.atoms.length; i++) {
-			if ( i == this.central_atom) continue
-			this.ligations.push({p1: this.central_atom, p2: i})
+				atoms.push( s )
 		}
+
+		return atoms
 	}
 
-	public static split_atoms( formula:string ) {
-		const splited = formula.match( /[A-Z][a-z]?_?\d?/g )
+	constructor(
+		public atoms: Atom[])
+	{
+		this.atoms.sort( (a,b) =>
+			(a.get_ligations() > b.get_ligations()) ? -1 : 1 )
 
-		let data = splited?.map(d => {
-			const [el, n] = d.split('_')
-			const [s] = Atom.search_atom(el)
-			return { el: s, n: parseInt(n) || 1 }
-		})
+		let m = 0
+		for (let i = 1; i < this.atoms.length; i++) {
+			if (atoms[m].shells[atoms[m].shells.length-1] < i) {
+				m++
+			}
 
-		return data
+			const l = new Ligation( atoms[m], atoms[i] )
+			this.ligations.push(l)
+		}
 	}
 
 }

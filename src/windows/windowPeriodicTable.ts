@@ -1,22 +1,18 @@
 import Atom from "../functions/Atom";
-import Window from "./window";
-import WindowAtom from "./windowAtom";
+import Window from "../features/window";
 import WindowElement from "./windowElement";
 import './windowPeriodicTable.css'
 
-class WindowPeriodicTable extends Window {
-	private table:HTMLDivElement
-
+class Window_periodic_table extends Window {
 	constructor() {
-		super("Periodic Table")
-		this.table = document.createElement('div')
-		this.table.id = "periodic-table"
-
-		this.div_container.appendChild(this.table)
+		super("Tabela Periódica")
 	}
 
 	public async render(): Promise<void> {
 		const data = await Atom.get_all()
+
+		const table = document.createElement('div')
+		table.id = "periodic-table"
 
 		for(const atom of data) {
 			const div = document.createElement('td')
@@ -24,23 +20,19 @@ class WindowPeriodicTable extends Window {
 			div.textContent = atom.symbol
 			div.style.gridRowStart = `${atom.ypos}`
 			div.style.gridColumnStart = `${atom.xpos}`
-			div.style.backgroundColor = Atom.type_to_color(atom)
+			div.style.backgroundColor = atom.color
 
 			div.addEventListener('click', async _ => {
-				const atoms: atom_schema[] = await Atom.search_atom(atom.symbol)
-
-				const w2 = new WindowAtom(atoms[0])
-				w2.render()
-
-				const w1 = new WindowElement(atoms[0])
-				w1.render()
+				const d = await Atom.search_atom(atom.symbol)
+				WindowElement.start_element_with_info(d)
 			})
 
-			this.table.appendChild(div)
+			table.appendChild(div)
+			this.add_to_container(table)
 		}
 	}
 
 	public destroy(): void {}
 }
 
-export default WindowPeriodicTable
+export default Window_periodic_table

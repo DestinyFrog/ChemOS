@@ -1,48 +1,89 @@
-import all from "../data"
+import { atom_schema } from "./atom_schema"
 
 class Atom {
-	public static async get_all(): Promise<atom_schema[]> {
+	public name: string
+	public atomic_radius: null | number
+	public eletronegativity: null | number
+	public atomic_mass: number
+	public category: string
+	public number: number
+	public period: number
+	public group: number
+	public symbol: string
+	public phase: string
+	public xpos: number
+	public ypos: number
+	public shells: number[]
+	public electron_configuration: string
+	public color: string
+
+	constructor(
+		{name, atomic_radius, eletronegativity, atomic_mass, category, number, period, group, symbol, phase, xpos, ypos, shells, electron_configuration}
+		:atom_schema) {
+		this.name = name
+		this.atomic_radius = atomic_radius
+		this.eletronegativity = eletronegativity
+		this.atomic_mass = atomic_mass
+		this.category = category
+		this.number = number
+		this.period = period
+		this.group = group
+		this.symbol = symbol
+		this.phase = phase
+		this.xpos = xpos
+		this.ypos = ypos
+		this.shells = shells
+		this.electron_configuration = electron_configuration
+
+		this.color = this.get_color()
+	}
+
+	public get_ligations(): number {
+		return this.shells[ this.shells.length-1 ] > 3 ?
+		8 - this.shells[ this.shells.length-1 ] :
+		this.shells[ this.shells.length-1 ]
+	}
+
+	private get_color(): string {
+		switch(this.category) {
+			case 'noble gas':				return '#9400d3'
+			case 'alkali metal':			return '#e5b80b'
+			case 'alkaline earth metal':	return '#FF6600'
+			case 'metalloid':				return '#8db600'
+			case 'nonmetal':				return '#008000'
+			case 'hydrogen':				return '#aaddaa'
+			case 'transition metal':		return '#970700'
+			case 'post-transition metal':	return '#ff007f'
+			case 'lanthanide':				return '#054f77'
+			case 'actinide':				return '#4169e1'
+			case 'unknown':					return '#333333'
+			default:						return '#000000'
+		}
+	}
+
+	public static async get_all(): Promise<Atom[]> {
 		try {
 			const response = await fetch('/data.json')
 			const data:atom_schema[] = await response.json()
-			return data
+			return data.map(d => new Atom(d))
 		}
-		catch (error) {
-			throw error
-		}
+		catch (error) { throw error }
 	}
 
-	public static search_atom(term:string): atom_schema[] {
+	public static async search_atom(term:string): Promise<Atom> {
 		try {
-			// const response = await fetch('/data.json')
-			// const data:atom_schema[] = await response.json()
-			const f = all.filter(d => d.symbol == term)
+			const response = await fetch('/data.json')
+			const data:atom_schema[] = await response.json()
+			const f = data.filter(d => d.symbol == term)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')
-			return f
+
+			return new Atom(f[0])
 		}
-		catch (error) {
-			throw error
-		}
+		catch (error) { throw error }
 	}
 
-	public static type_to_color(atom:atom_schema): string {
-		switch(atom.category) {
-			case 'noble gas': return '#9400d3'
-			case 'alkali metal': return '#e5b80b'
-			case 'alkaline earth metal': return '#FF6600'
-			case 'metalloid': return '#8db600'
-			case 'nonmetal': return '#008000'
-			case 'hydrogen': return '#aaddaa'
-			case 'transition metal': return '#970700'
-			case 'post-transition metal': return '#ff007f'
-			case 'lanthanide': return '#054f77'
-			case 'actinide': return '#4169e1'
-			case 'unknown': return '#333333'
-			default: return '#000000'
-		}
-	}
 }
 
 export default Atom

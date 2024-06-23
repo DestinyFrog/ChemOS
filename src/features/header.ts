@@ -1,7 +1,8 @@
-import WindowElement from "./windows/windowElement"
-import WindowsLinusPauling from "./windows/windowLinusPauling"
-import WindowMolecule from "./windows/windowMolecule"
-import WindowPeriodicTable from './windows/windowPeriodicTable'
+import WindowElement from "../windows/windowElement"
+import WindowsLinusPauling from "../windows/windowLinusPauling"
+import WindowMolecule from "../windows/windowMolecule"
+import WindowPeriodicTable from '../windows/windowPeriodicTable'
+import "./header.css"
 
 class Header {
 	public static draw(app:HTMLDivElement) {

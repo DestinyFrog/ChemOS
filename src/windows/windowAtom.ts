@@ -1,33 +1,20 @@
-import Window from "./window"
-import './windowAtom.css'
+import Atom from "../functions/Atom"
+import Window from "../features/window"
+import "./windowAtom.css"
+import { CANVAS_BACKGROUND_COLOR, CIRCUFERENCE, DELAY, ELETRON_COLOR, ELETRON_LAYER_COLOR, ELETRON_RADIUS, ELETRON_SPEED, NUCLEUM_RADIUS, PROTON_COLOR, PROTON_RADIUS } from "../configuration"
 
-const CIRCUFERENCE = Math.PI*2
+class Window_atom extends Window {
+	private atom:Atom
+	private WIDTH:number
+	private HEIGHT:number
+	private CENTER:{x:number, y:number}
 
-class WindowAtom extends Window {
-	public atom:atom_schema
-	public WIDTH:number
-	public HEIGHT:number
-	public CENTER:{x:number, y:number}
+	private eletrons_angle = 0
 
-	private ELETRONS_ANGLE = 0
-	private ELETRON_RADIUS = 3
-	private ELETRON_SPEED = 0.03
-	private LAYER_COLOR = '#FFFFFF33'
-	private ELETRON_COLOR = '#0000ff'
-	
-	private PROTON_RADIUS = 3
-	private PROTON_COLOR = "#FF0000"
-	private NUCLEUM_RADIUS = 10
+	private ctx:CanvasRenderingContext2D
 
-	public DELAY = 40
-	public BACKGROUND_COLOR = "#000000BB"
-
-	public ctx:CanvasRenderingContext2D
-
-	public animation_frame:number = 0
-
-	constructor(atom:atom_schema) {
-		super( `Atom - ${atom.name}` )
+	constructor(atom:Atom) {
+		super( `Átomo - ${atom.name}` )
 		this.atom = atom
 
 		this.WIDTH = (this.atom!.atomic_radius || 100)*2 + 80
@@ -35,81 +22,80 @@ class WindowAtom extends Window {
 		this.CENTER = { x: this.WIDTH/2, y: this.HEIGHT/2 }
 
 		const canvas = document.createElement('canvas')
-		this.div_container.appendChild(canvas)
+		this.add_to_container(canvas)
 
 		canvas.width = this.WIDTH
 		canvas.height = this.HEIGHT
 
 		this.ctx = canvas.getContext('2d')!
+		this.setup_context()
+	}
+
+	private setup_context() {
 		this.ctx.lineWidth = 1
 	}
 
 	public render() {
-		setTimeout( () =>
-			requestAnimationFrame( () => this.draw() ), this.DELAY)
+		requestAnimationFrame( () => this.draw() )
 	}
 
-	public destroy(): void {
-		cancelAnimationFrame(this.animation_frame)
-	}
+	public destroy(): void {}
 
 	private draw() {
-		if( this.ELETRONS_ANGLE > CIRCUFERENCE - this.ELETRON_SPEED)
-			this.ELETRONS_ANGLE = 0
-		else
-			this.ELETRONS_ANGLE += this.ELETRON_SPEED
+		if(this.eletrons_angle > CIRCUFERENCE - ELETRON_SPEED)
+			this.eletrons_angle = 0; else
+			this.eletrons_angle += ELETRON_SPEED
 
-		this.ctx.fillStyle = this.BACKGROUND_COLOR
+		this.ctx.fillStyle = CANVAS_BACKGROUND_COLOR
 		this.ctx.clearRect(0,0,this.WIDTH,this.HEIGHT)
 
-		this.ctx.fillStyle = this.PROTON_COLOR
+		this.ctx.fillStyle = PROTON_COLOR
 		for (let i = 0; i < this.atom!.number; i++) {
 			const angle = Math.floor( Math.random() * CIRCUFERENCE )
-			const distance =  Math.floor(Math.random()*this.NUCLEUM_RADIUS)
+			const distance =  Math.floor(Math.random() * NUCLEUM_RADIUS)
 
 			this.ctx.beginPath()
 			this.ctx.arc(
 				this.CENTER.x + Math.cos(angle) * distance,
 				this.CENTER.y + Math.sin(angle) * distance,
-				this.PROTON_RADIUS,
-				0, CIRCUFERENCE)
+				PROTON_RADIUS, 0, CIRCUFERENCE)
 			this.ctx.fill()
 			this.ctx.closePath()
 		}
 
-		this.ctx.strokeStyle = this.LAYER_COLOR
+		this.ctx.strokeStyle = ELETRON_LAYER_COLOR
 		for (let i = 1; i <= this.atom.period; i++) {
 			this.ctx.beginPath()
-			this.ctx.arc(this.CENTER.x, this.CENTER.y, (this.atom!.atomic_radius || 100)/this.atom.period*i + this.NUCLEUM_RADIUS, 0, CIRCUFERENCE)
+			this.ctx.arc(this.CENTER.x, this.CENTER.y, (this.atom!.atomic_radius || 100)/this.atom.period*i + NUCLEUM_RADIUS, 0, CIRCUFERENCE)
 			this.ctx.stroke()
 			this.ctx.closePath()
 		}
 
 
-		this.ctx.fillStyle = this.ELETRON_COLOR
-		
+		this.ctx.fillStyle = ELETRON_COLOR
 		for (let i = 0; i < this.atom!.period; i++) {
 			// Cada camada
 
 			for (let j = 1; j <= this.atom!.shells[i]; j++) {
 				// Cada eletron da camada
 
-				const angle = ( CIRCUFERENCE / this.atom!.shells[i] * j ) + this.ELETRONS_ANGLE
-				const distance = (this.atom!.atomic_radius || 100) /this.atom!.period*(1+i) + this.NUCLEUM_RADIUS
+				const angle = ( CIRCUFERENCE / this.atom!.shells[i] * j ) + this.eletrons_angle
+				const distance = (this.atom!.atomic_radius || 100) /this.atom!.period*(1+i) + NUCLEUM_RADIUS
 
 				this.ctx.beginPath()
 				this.ctx.arc(
 					this.CENTER.x + Math.cos(angle) * distance,
 					this.CENTER.y + Math.sin(angle) * distance,
-					this.ELETRON_RADIUS, 0, CIRCUFERENCE)
+					ELETRON_RADIUS, 0, CIRCUFERENCE)
 				this.ctx.fill()
 				this.ctx.closePath()
 			}
 		}
 
 		setTimeout( () =>
-			requestAnimationFrame( () => this.draw() ), this.DELAY)
+			requestAnimationFrame( () => this.draw() ),
+			DELAY)
 	}
 }
 
-export default WindowAtom
+export default Window_atom

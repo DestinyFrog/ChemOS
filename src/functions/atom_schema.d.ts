@@ -1,4 +1,4 @@
-interface atom_schema {
+export interface atom_schema {
 	name: string;
 	atomic_radius: null | number;
 	eletronegativity: null | number;
@@ -13,10 +13,10 @@ interface atom_schema {
 	ypos: number;
 	shells: number[];
 	electron_configuration: string;
-	max_eletron?: number | null | undefined
 }
 
 enum ligation_type {
 	'ionic',
 	'covalent'
 }
+

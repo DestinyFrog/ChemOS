@@ -1,66 +1,92 @@
-import Atom from "../functions/Atom";
-import Molecule from "../functions/Molecule";
-import Window from "./window";
+import Molecule from "../functions/Molecule"
+import Window from "../features/window"
+import { CIRCUFERENCE } from "../configuration"
 
 class WindowMolecule extends Window {
-	private data
-
+	private molecule_form:string
 	private ctx
-	public WIDTH = 350
-	public HEIGHT = 350
-	public CENTER:{x:number, y:number}
-	
-	constructor( molecule_form:string ) {
+	public WIDTH = 450
+	public HEIGHT = 450
+	public CENTER:{x:number, y:number} = {x:0, y:0}
+	private data!: Molecule;
+	private canvas:HTMLCanvasElement
+
+	private drawn: {x:number, y:number}[] = []
+
+	constructor(molecule_form:string) {
 		super("Molecula")
+		this.molecule_form = molecule_form
 
-		this.data = new Molecule(molecule_form)
-		console.log(this.data)
+		this.canvas = document.createElement('canvas')
+		this.add_to_container(this.canvas)
 
-		const canvas = document.createElement('canvas')
-		this.div_container.appendChild(canvas)
-
-		this.CENTER = { x: this.WIDTH/2, y: this.HEIGHT/2 }
-		canvas.width = this.WIDTH
-		canvas.height = this.HEIGHT
-
-		this.ctx = canvas.getContext('2d')!
+		this.ctx = this.canvas.getContext('2d')!
 		this.ctx.lineWidth = 1
 		this.ctx.textAlign = 'center'
 		this.ctx.textBaseline = 'middle'
 	}
 
-	public render(): void {
-		this.ctx.fillStyle = Atom.type_to_color( this.data.atoms[this.data.central_atom] )
+	public async render(): Promise<void> {
+		try {
+			const resp = await Molecule.split_molecule(this.molecule_form)
+			this.data = new Molecule(resp)
+		} catch(err) { throw err }
 
+		// const size = this.data.atoms.reduce((acc, cur) =>
+			// acc += cur.atomic_radius!*2, 0)
+
+		this.WIDTH = 500
+		this.HEIGHT = 500
+		this.CENTER = { x: this.WIDTH/2, y: this.HEIGHT/2 }
+		this.canvas.width = this.WIDTH
+		this.canvas.height = this.HEIGHT
+
+		console.table(this.data.ligations)
+		this.draw()
+	}
+
+	public draw(): void {
+		const proportion = 0.5
+
+		// Draw Central Atom
 		this.ctx.beginPath()
-		this.ctx.arc(this.CENTER.x, this.CENTER.y,
-			this.data.atoms[this.data.central_atom].atomic_radius!/2,
-			0, Math.PI*2
-		)
+		this.ctx.fillStyle = this.data.atoms[0].color
+		this.ctx.arc(this.CENTER.x, this.CENTER.y,this.data.atoms[0].atomic_radius!*proportion,0, CIRCUFERENCE)
 		this.ctx.fill()
-
 		this.ctx.fillStyle = '#fff'
-		this.ctx.fillText(this.data.atoms[this.data.central_atom].symbol, this.CENTER.x, this.CENTER.y)
+		this.ctx.fillText(this.data.atoms[0].symbol, this.CENTER.x, this.CENTER.y)
 
+		let ord = 0
+		let count = 0
 		let angle = 0
-		this.data.ligations.forEach(({p1, p2}) => {
-			this.ctx.fillStyle = Atom.type_to_color( this.data.atoms[p2] )
+		let focus_x = this.CENTER.x
+		let focus_y = this.CENTER.y
 
-			angle += Math.PI*2 / this.data.ligations.length
-			const distance = this.data.atoms[p2].atomic_radius!/2 + this.data.atoms[p1].atomic_radius!/2
-			const x = this.CENTER.x + Math.cos(angle) * distance
-			const y = this.CENTER.y + Math.sin(angle) * distance
+		for (let i = 0; i < this.data.ligations.length; i++) {
+			this.ctx.fillStyle = this.data.ligations[i].p2.color
+
+			angle += 0.4
+			const distance = this.data.ligations[i].p2.atomic_radius!*proportion + this.data.ligations[i].p1.atomic_radius!*proportion
+
+			let x = focus_x + Math.cos(angle) * distance
+			let y = focus_y + Math.sin(angle) * distance
+			this.drawn.push( {x,y} )
+
+			count++
+			if ( count >= this.data.ligations[i].p1.get_ligations() ) {
+				count = 0
+				ord++
+				focus_x = this.drawn[ord].x
+				focus_y = this.drawn[ord].y
+			}
 
 			this.ctx.beginPath()
-			this.ctx.arc(x,y,
-				this.data.atoms[p2].atomic_radius!/2,
-				0, Math.PI*2
-			)
+			this.ctx.arc(x,y,this.data.ligations[i].p2.atomic_radius!*proportion,0, CIRCUFERENCE)
 			this.ctx.fill()
-
 			this.ctx.fillStyle = '#fff'
-			this.ctx.fillText(this.data.atoms[p2].symbol, x, y)
-		})
+			this.ctx.fillText(this.data.ligations[i].p2.symbol, x, y)
+		}
+
 	}
 
 	static dialog_search(): HTMLDialogElement {

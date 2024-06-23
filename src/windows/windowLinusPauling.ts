@@ -1,4 +1,4 @@
-import Window from "./window";
+import Window from "../features/window";
 
 class WindowsLinusPauling extends Window {
 	private ctx: CanvasRenderingContext2D;

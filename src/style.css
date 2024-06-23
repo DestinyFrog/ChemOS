@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
+	overscroll-behavior-block: contain;
+	overscroll-behavior-y: none;
 }
 
 :root {
@@ -27,21 +30,6 @@ body {
 
 	width: 100vw;
 	height: 100vh;
-
-	overscroll-behavior-block: contain;
-	overscroll-behavior-y: none;
-}
-
-header {
-	width: 100vw;
-	height: auto;
-
-	position: fixed;
-	top: 0;
-	left: 0;
-
-	background-color: #1f1f1f;
-	border: 4px solid black;
 }
 
 dialog {
@@ -50,44 +38,4 @@ dialog {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 10px;
-}
-
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
-}
-
-#app {
-	margin: 0 auto;
-	text-align: center;
-
-	display: flex;
-	flex-direction: row;
-	align-items: start;
-}
-
-button {
-	margin: 10px;
-	/* border-radius: 8px; */
-	/* border: 1px solid transparent; */
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #1a1a1a;
-	cursor: pointer;
-	transition: border-color 0.25s;
-}
-
-button:hover {
-	border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
-}
-
-button img {
-	width: 30px;
 }
