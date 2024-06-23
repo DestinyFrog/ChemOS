@@ -15,7 +15,7 @@ class WindowAtom3D extends Window {
 	private renderer: THREE.WebGLRenderer
 	private eletrons: THREE.Mesh[][] = Array()
 	private protons: THREE.Mesh[] = Array()
-	private neutrons: THREE.Mesh[] = Array()
+	// private neutrons: THREE.Mesh[] = Array()
 
 	private eletrons_angle = 0
 
