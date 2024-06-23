@@ -1,6 +1,6 @@
 import WindowElement from "../windows/windowElement"
 import WindowsLinusPauling from "../windows/windowLinusPauling"
-import WindowMolecule from "../windows/windowMolecule"
+// import WindowMolecule from "../windows/windowMolecule"
 import WindowPeriodicTable from '../windows/windowPeriodicTable'
 import "./header.css"
 
@@ -16,6 +16,7 @@ class Header {
 		})
 		header.appendChild(button_search_atom)
 
+		/*
 		const button_search_molecule = document.createElement('button')
 		button_search_molecule.textContent = 'Molécula'
 		button_search_molecule.addEventListener('click', _ => {
@@ -23,6 +24,7 @@ class Header {
 			app.appendChild(search_draw_molecule)
 		})
 		header.appendChild(button_search_molecule)
+		*/
 
 		const button_periodic_table = document.createElement('button')
 		button_periodic_table.textContent = 'Tabela Periódica'
@@ -38,6 +40,7 @@ class Header {
 			const w = new WindowsLinusPauling()
 			w.render()
 		})
+
 		header.appendChild(button_linus_pauling)
 	}
 }

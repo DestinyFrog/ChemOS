@@ -12,6 +12,11 @@
 	width: 100%;
 }
 
+.item-name {
+	text-align: center;
+	font-size: large;
+}
+
 .item-number {
 	text-align: start;
 	font-size: large;

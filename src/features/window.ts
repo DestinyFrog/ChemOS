@@ -4,6 +4,7 @@ abstract class Window {
 	private div_window:HTMLDivElement
 	private div_header:HTMLDivElement
 	private div_container:HTMLDivElement
+	private div_footer:HTMLDivElement
 
 	private drag_position = { x:0, y:0} 
 	private before_drag_position = { x:0, y:0}
@@ -67,6 +68,11 @@ abstract class Window {
 		app.appendChild(this.div_container)
 		this.div_window.appendChild(this.div_container)
 
+		this.div_footer = document.createElement('div')
+		this.div_header.className = "window-footer"
+		app.appendChild(this.div_footer)
+		this.div_window.appendChild(this.div_footer)
+
 		const button_close_window = document.createElement('button')
 		button_close_window.className = "window-closer"
 		button_close_window.addEventListener('click', _ => {
@@ -105,6 +111,10 @@ abstract class Window {
 
 	protected add_to_container(el:HTMLElement) {
 		this.div_container.appendChild(el)
+	}
+
+	protected add_to_footer(el:HTMLElement) {
+		this.div_footer.appendChild(el)
 	}
 
 	protected add_to_header(el:HTMLElement) {

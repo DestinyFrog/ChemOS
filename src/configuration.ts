@@ -3,6 +3,8 @@
 export const CIRCUFERENCE = Math.PI*2
 
 // Eletron Configuration
+export const ELETRONS_SPEED_LEVELS = [0, 1, 2, 5, 10]
+
 export const ELETRON_RADIUS = 3
 export const ELETRON_SPEED = 0.03
 export const ELETRON_LAYER_COLOR = '#FFFFFF33'
@@ -23,7 +25,8 @@ export const PROTON_COLOR_3D = "#FF0000"
 // Canvas Configuration
 export const CANVAS_BACKGROUND_COLOR = "#000000BB"
 
-export const NUCLEUM_RADIUS = 10 //? questionable
+//? questionable
+export const NUCLEUM_RADIUS = 10
 
 // Frames
 export const DELAY = 40

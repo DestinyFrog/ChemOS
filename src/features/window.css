@@ -15,6 +15,12 @@
 	display: flex;
 }
 
+.window-footer {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
 .window-label {
 	margin-left: 10px;
 	-webkit-user-select: none; /* Safari */

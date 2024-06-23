@@ -1,6 +1,6 @@
 import Window from "../features/window";
 
-class WindowsLinusPauling extends Window {
+class Windows_Linus_Pauling extends Window {
 	private ctx: CanvasRenderingContext2D;
 	private OFFSET = 30
 	private UNIT = 36
@@ -94,4 +94,4 @@ class WindowsLinusPauling extends Window {
 	public destroy(): void {}
 }
 
-export default WindowsLinusPauling
+export default Windows_Linus_Pauling

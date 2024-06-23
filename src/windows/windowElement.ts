@@ -34,15 +34,16 @@ class WindowElement extends Window {
 	public destroy(): void {}
 
 	public static start_element_with_info(atom:Atom) {
-		const w2 = new WindowAtom(atom)
+		const w2 = new WindowElement(atom)
 		w2.render()
 
-		const w1 = new WindowElement(atom)
-		w1.render()
-
-		const pos = w2.get_position()
-		pos.x += w2.get_size().width - w1.get_size().width
+		const w1 = new WindowAtom(atom)
+		const pos = w1.get_position()
+		pos.x = w2.get_position().x + w2.get_size().width
+		pos.y = w2.get_position().y
 		w1.set_position(pos)
+
+		w1.render()
 	}
 
 	public static dialog_search(): HTMLDialogElement {
