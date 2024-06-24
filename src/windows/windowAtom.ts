@@ -86,13 +86,11 @@ class Window_atom extends Window {
 				this.ctx.stroke()
 				this.ctx.closePath()
 			}
-
-
 			this.ctx.fillStyle = ELETRON_COLOR
-			for (let i = 0; i < this.atom!.period; i++) {
+			for (let i = 0; i < this.atom.period; i++) {
 				// Cada camada
 
-				for (let j = 1; j <= this.atom!.shells[i]; j++) {
+				for (let j = 1; j <= this.atom.shells[i]; j++) {
 					// Cada eletron da camada
 
 					const angle = ( CIRCUFERENCE / this.atom.shells[i] * j ) + this.eletrons_angle
