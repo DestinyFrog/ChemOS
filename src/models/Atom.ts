@@ -74,7 +74,7 @@ class Atom {
 		try {
 			const response = await fetch('/data.json')
 			const data:atom_schema[] = await response.json()
-			const f = data.filter(d => d.symbol == term)
+			const f = data.filter(d => d.symbol == term || d.name == term)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')
