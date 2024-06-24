@@ -1,6 +1,7 @@
 import Molecule from "../models/Molecule"
 import Window from "../features/window"
 import { CIRCUFERENCE } from "../configuration"
+import Window_error from "../features/error"
 
 class WindowMolecule extends Window {
 	private molecule_form:string
@@ -104,15 +105,16 @@ class WindowMolecule extends Window {
 		submitButton.textContent = 'Search'
 		submitButton.addEventListener('click', async (_) => {
 			try {
-				// TODO: Return error if input is 'null'
 				const txt = input.value
+				if (txt == '')
+					throw new Error('Input is NULL')
 
 				const w1 = new WindowMolecule(txt)
 				w1.render()
 			}
 			catch (err) {
-				// TODO: Treat error if find nothing
-				throw err
+				const w = new Window_error(<Error> err)
+				w.render()
 			}
 
 			searchDialog.remove()
