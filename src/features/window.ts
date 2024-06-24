@@ -3,7 +3,7 @@ import './window.css'
 abstract class Window {
 	private div_window:HTMLDivElement
 	private div_header:HTMLDivElement
-	private div_container:HTMLDivElement
+	protected div_container:HTMLDivElement
 	private div_footer:HTMLDivElement
 
 	private drag_position = { x:0, y:0} 

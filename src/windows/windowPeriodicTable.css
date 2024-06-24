@@ -1,4 +1,13 @@
 
+#periodic-table-menu {
+	display: flex;
+	flex-direction: column;
+}
+
+#periodic-table-menu * {
+	width: 200px;
+}
+
 #periodic-table {
 	display: grid;
 	margin: 5px;
@@ -7,9 +16,20 @@
 }
 
 .periodic-table-element {
-	padding: 4px;
 	border: 1px solid aliceblue;
 
-	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 3px;
+
+	font-size: 16px;
+
+	height: 34px;
+	width: 34px;
+}
+
+.circle {
+	border-radius: 50%;
 	aspect-ratio: 1/1;
 }
