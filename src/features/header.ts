@@ -1,12 +1,16 @@
 import WindowElement from "../windows/windowElement"
 import WindowsLinusPauling from "../windows/windowLinusPauling"
-// import WindowMolecule from "../windows/windowMolecule"
 import WindowPeriodicTable from '../windows/windowPeriodicTable'
 import "./header.css"
 
 class Header {
 	public static draw(app:HTMLDivElement) {
 		const header = document.getElementById('header')!
+
+		const img_logo = document.createElement('img')
+		img_logo.id = 'logo'
+		img_logo.src = './logo.svg'
+		header.appendChild(img_logo)
 
 		const button_search_atom = document.createElement('button')
 		button_search_atom.textContent = 'Átomo'
@@ -40,7 +44,6 @@ class Header {
 			const w = new WindowsLinusPauling()
 			w.render()
 		})
-
 		header.appendChild(button_linus_pauling)
 	}
 }
