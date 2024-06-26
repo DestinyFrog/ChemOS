@@ -53,13 +53,13 @@ class Window_periodic_table extends Window {
 			case 'raio_atomico':
 				const r = document.createElement('div')
 				r.className = 'circle'
-				r.style.width = `${100 * (atom.atomic_radius||350) / 350}%`
-				r.style.backgroundColor = '#ffffff'
+				r.style.width = `${100 * (atom.atomic_radius||0) / 350}%`
+				r.style.backgroundColor = `rgb(255,${Math.floor(255 * (atom.atomic_radius||0) / 350)},0)`
 				el.appendChild(r)
 				break
 
 			case 'eletronegatividade':
-				el.textContent = atom.eletronegativity!.toString()
+				el.textContent = (atom.eletronegativity || 'X').toString()
 				break
 		}
 	}
