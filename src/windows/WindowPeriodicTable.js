@@ -1,30 +1,33 @@
-import Atom from "../models/Atom";
-import Window from "../features/window";
-import Window_element from "./windowElement";
-import './windowPeriodicTable.css'
-import Window_atom from "./windowAtom";
+import Atom from "../models/Atom"
+import WindowElement from "./WindowElement"
+import './WindowPeriodicTable.css'
+import WindowAtom from "./WindowAtom"
+import Window from '../features/Window'
 
-class Window_periodic_table extends Window {
-	private type: string = 'normal'
-	private table: HTMLDivElement
-
+class WindowPeriodicTable extends Window {
 	constructor() {
 		super("Tabela Periódica")
 		this.div_container.style.display = 'flex'
+		this._type = "normal"
+	}
 
+	/**
+	 * @param {string} value
+	*/
+	set type(value) {
+		this._type = value
+		this._LoadTable()
+	}
+
+	Render() {
 		this.table = document.createElement('div')
-	}
-
-	public render(): void {
-
 		this.table.id = "periodic-table"
-		this.add_to_container(this.table)
-		this.load_table()
-
-		this.add_to_container( this.generate_menu() )
+		this.AddToContainer(this.table)
+		this.AddToContainer( this._GenerateMenu() )
+		this._LoadTable()
 	}
 
-	private load_table() {
+	_LoadTable() {
 		this.table.innerHTML = ''
 
 		for(const atom of Atom.data) {
@@ -34,20 +37,20 @@ class Window_periodic_table extends Window {
 			block.style.gridColumnStart = `${atom.xpos}`
 
 			block.addEventListener('click', async _ => {
-				const w = new Window_element(atom)
-				w.render()
+				let w = new WindowElement(atom)
+				w.Render()
 
-				const w1 = new Window_atom(atom)
-				w1.render()
+				w = new WindowAtom(atom)
+				w.Render()
 			})
 
-			this.generate_block(block, atom)
+			this._GenerateBlock(block, atom)
 			this.table.appendChild(block)
 		}
 	}
 
-	private generate_block(el:HTMLDivElement, atom:Atom) {
-		switch(this.type) {
+	_GenerateBlock(el, atom) {
+		switch(this._type) {
 			case 'normal':
 				el.textContent = atom.symbol
 				el.style.backgroundColor = atom.color
@@ -67,34 +70,33 @@ class Window_periodic_table extends Window {
 		}
 	}
 
-	private generate_menu() {
+	_GenerateMenu() {
 		const menu = document.createElement('div')
 		menu.id = 'periodic-table-menu'
 
 		const menu_item_normal= document.createElement('button')
 		menu_item_normal.textContent = 'Normal'
-		menu_item_normal.addEventListener('click', () => this.set_type('normal'))
+		menu_item_normal.addEventListener('click', () => {
+			this.type = 'normal'
+		})
 		menu.appendChild( menu_item_normal )
 
 		const menu_item_raio_atomico = document.createElement('button')
 		menu_item_raio_atomico.textContent = 'Raio Atômico'
-		menu_item_raio_atomico.addEventListener('click', () => this.set_type('raio_atomico'))
+		menu_item_raio_atomico.addEventListener('click', () => {
+			this.type = 'raio_atomico'
+		})
 		menu.appendChild( menu_item_raio_atomico )
 
 		const menu_item_eletronegatividade= document.createElement('button')
 		menu_item_eletronegatividade.textContent = 'Eletronegatividade'
-		menu_item_eletronegatividade.addEventListener('click', () => this.set_type('eletronegatividade'))
+		menu_item_eletronegatividade.addEventListener('click', () => {
+			this.type = 'eletronegatividade'
+		})
 		menu.appendChild( menu_item_eletronegatividade )
 
 		return menu
 	}
-
-	private set_type(value:string) {
-		this.type = value
-		this.load_table()
-	}
-
-	public destroy(): void {}
 }
 
-export default Window_periodic_table
+export default WindowPeriodicTable

@@ -1,16 +1,13 @@
-import Atom from "../models/Atom"
-import Window from "../features/window"
-import './windowElement.css'
+import Window from "../features/Window"
+import './WindowElement.css'
 
 class WindowElement extends Window {
-	public atom:Atom
-
-	constructor(atom:Atom) {
+	constructor(atom) {
 		super(`${atom.name}`)
 		this.atom = atom
 	}
 
-	public render() {
+	Render() {
 		const div_item = document.createElement('div')
 		div_item.className = "item"
 		div_item.innerHTML = `
@@ -26,10 +23,8 @@ class WindowElement extends Window {
 		div_element.appendChild(div_item)
 		div_element.innerHTML += `<p class="item-shells">${this.atom.shells.join('</br>')}</p>`
 
-		this.add_to_container(div_element)
+		this.AddToContainer(div_element)
 	}
-
-	public destroy(): void {}
 }
 
 export default WindowElement

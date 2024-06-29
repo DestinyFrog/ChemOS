@@ -1,26 +1,8 @@
-import Window_error from "../features/error"
-import { atom_schema } from "./atom_schema"
+import WindowError from "../features/WindowError"
 
 class Atom {
-	public name: string
-	public atomic_radius: null | number
-	public eletronegativity: null | number
-	public atomic_mass: number
-	public category: string
-	public number: number
-	public period: number
-	public group: number
-	public symbol: string
-	public phase: string
-	public xpos: number
-	public ypos: number
-	public shells: number[]
-	public electron_configuration: string
-	public color: string
-
 	constructor(
-		{name, atomic_radius, eletronegativity, atomic_mass, category, number, period, group, symbol, phase, xpos, ypos, shells, electron_configuration}
-		:atom_schema) {
+		{name, atomic_radius, eletronegativity, atomic_mass, category, number, period, group, symbol, phase, xpos, ypos, shells, electron_configuration}) {
 		this.name = name
 		this.atomic_radius = atomic_radius
 		this.eletronegativity = eletronegativity
@@ -35,17 +17,15 @@ class Atom {
 		this.ypos = ypos
 		this.shells = shells
 		this.electron_configuration = electron_configuration
-
-		this.color = this.get_color()
 	}
 
-	public get_ligations(): number {
+	get ligations() {
 		return this.shells[ this.shells.length-1 ] > 3 ?
 		8 - this.shells[ this.shells.length-1 ] :
 		this.shells[ this.shells.length-1 ]
 	}
 
-	private get_color(): string {
+	get color() {
 		switch(this.category) {
 			case 'gás nobre':				return '#9400d3'
 			case 'metal alcalino':			return '#e5b80b'
@@ -62,18 +42,17 @@ class Atom {
 		}
 	}
 
-	public static data: Atom[]
-
-	public static async start_global_data() {
+	static data = null
+	static async StartGlobalData() {
 		try {
-			const response = await fetch('/data.json')
-			const data:atom_schema[] = await response.json()
-			Atom.data = data.map(d => new Atom(d))
+			const response = await fetch('./data.json')
+			const data = await response.json()
+			this.data = data.map(d => new Atom(d))
 		}
 		catch (error) { throw error }
 	}
 
-	public static search_atom(term:string): Atom|null {
+	static SearchAtom(term) {
 		try {
 			const f = Atom.data.filter(d => d.symbol == term || d.name == term)
 
@@ -83,8 +62,8 @@ class Atom {
 			return f[0]
 		}
 		catch (error) {
-			const w = new Window_error(<Error> error)
-			w.render()
+			const w = new WindowError(error)
+			w.Render()
 			return null
 		}
 	}

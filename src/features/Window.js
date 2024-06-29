@@ -1,16 +1,14 @@
-import './window.css'
+import './Window.css'
 
-abstract class Window {
-	private div_window:HTMLDivElement
-	private div_header:HTMLDivElement
-	protected div_container:HTMLDivElement
-	private div_footer:HTMLDivElement
+class Window {
+	drag_position = { x:0, y:0} 
+	before_drag_position = { x:0, y:0}
 
-	private drag_position = { x:0, y:0} 
-	private before_drag_position = { x:0, y:0}
+	Render() {}
+	Destroy() {}
 
-	constructor(title:string) {
-		const app = document.querySelector<HTMLDivElement>('#app')!
+	constructor(title) {
+		const app = document.querySelector('#app')
 
 		this.div_window = document.createElement('div')
 		this.div_window.className = "window"
@@ -27,7 +25,7 @@ abstract class Window {
 			this.before_drag_position.x = ev.clientX
 			this.before_drag_position.y = ev.clientY
 
-			const mouseMove = (ev:MouseEvent) => {
+			const mouseMove = (ev) => {
 				this.drag_position.x = this.before_drag_position.x - ev.clientX
 				this.drag_position.y = this.before_drag_position.y - ev.clientY
 
@@ -47,11 +45,11 @@ abstract class Window {
 			this.before_drag_position.x = ev.touches[0].clientX
 			this.before_drag_position.y = ev.touches[0].clientY
 
-			const mouseMove = (ev:TouchEvent) => {
+			const mouseMove = (ev) => {
 				this.drag_position.x = this.before_drag_position.x - ev.touches[0].clientX
 				this.drag_position.y = this.before_drag_position.y - ev.touches[0].clientY
 	
-				this.before_drag_position.x = ev.touches.item(0)?.clientX!
+				this.before_drag_position.x = ev.touches.item(0)?.clientX
 				this.before_drag_position.y = ev.touches[0].clientY
 
 				this.div_window.style.top = `${this.div_window.offsetTop - this.drag_position.y}px`
@@ -76,7 +74,7 @@ abstract class Window {
 		const button_close_window = document.createElement('button')
 		button_close_window.className = "window-closer"
 		button_close_window.addEventListener('click', _ => {
-			this.close()
+			this.Close()
 		})
 		this.div_header.appendChild(button_close_window)
 
@@ -86,42 +84,39 @@ abstract class Window {
 		this.div_header.appendChild(window_label)
 	}
 
-	public close() {
-		this.destroy()
+	Close() {
+		this.Destroy()
 		this.div_window.remove()
 	}
 
-	public abstract render(): void
-	public abstract destroy(): void
-
-	public set_position({x, y}:{x:number, y:number}) {
+	set position ({x, y}) {
 		this.div_window.style.top = `${y}px`
 		this.div_window.style.left = `${x}px`
 	}
 
-	public get_position() {
+	get position () {
 		return {
 			x: parseFloat( this.div_window.style.left.replace('.px','') ),
 			y: parseFloat( this.div_window.style.top.replace('.px','') )
 		}
 	}
 
-	public get_size() {
+	get size() {
 		return {
 			width: this.div_window.clientWidth,
 			height: this.div_window.clientHeight
 		}
 	}
 
-	protected add_to_container(el:HTMLElement) {
+	AddToContainer(el) {
 		this.div_container.appendChild(el)
 	}
 
-	protected add_to_footer(el:HTMLElement) {
+	AddToFooter(el) {
 		this.div_footer.appendChild(el)
 	}
 
-	protected add_to_header(el:HTMLElement) {
+	AddToHeader(el) {
 		this.div_header.appendChild(el)
 	}
 }

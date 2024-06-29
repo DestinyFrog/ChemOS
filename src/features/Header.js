@@ -1,11 +1,11 @@
-import Window_dialog_search_atom from "../windows/windowDialogSearchAtom"
-import WindowsLinusPauling from "../windows/windowLinusPauling"
-import WindowPeriodicTable from '../windows/windowPeriodicTable'
-import "./header.css"
+import WindowSearchAtom from "../windows/WindowSearchAtom"
+import WindowsLinusPauling from "../windows/WindowLinusPauling"
+import WindowPeriodicTable from '../windows/WindowPeriodicTable'
+import "./Header.css"
 
 class Header {
-	public static render() {
-		const header = document.getElementById('header')!
+	static Render() {
+		const header = document.getElementById('header')
 
 		const img_logo = document.createElement('img')
 		img_logo.id = 'logo'
@@ -15,26 +15,16 @@ class Header {
 		const button_search_atom = document.createElement('button')
 		button_search_atom.textContent = 'Átomo'
 		button_search_atom.addEventListener('click', _ => {
-			const window = new Window_dialog_search_atom();
-			window.render()
+			const w = new WindowSearchAtom();
+			w.Render()
 		})
 		header.appendChild(button_search_atom)
-
-		/*
-		const button_search_molecule = document.createElement('button')
-		button_search_molecule.textContent = 'Molécula'
-		button_search_molecule.addEventListener('click', _ => {
-			const search_draw_molecule = WindowMolecule.dialog_search()
-			app.appendChild(search_draw_molecule)
-		})
-		header.appendChild(button_search_molecule)
-		*/
 
 		const button_periodic_table = document.createElement('button')
 		button_periodic_table.textContent = 'Tabela Periódica'
 		button_periodic_table.addEventListener('click', _ => {
-			const search_draw_atom = new WindowPeriodicTable()
-			search_draw_atom.render()
+			const w = new WindowPeriodicTable()
+			w.Render()
 		})
 		header.appendChild(button_periodic_table)
 
@@ -42,7 +32,7 @@ class Header {
 		button_linus_pauling.textContent = 'Diagrama de Linus Pauling'
 		button_linus_pauling.addEventListener('click', _ => {
 			const w = new WindowsLinusPauling()
-			w.render()
+			w.Render()
 		})
 		header.appendChild(button_linus_pauling)
 	}
