@@ -32,7 +32,7 @@ class Atom {
 			case 'metal alcalino terroso':	return '#FF6600'
 			case 'metaloide':				return '#8db600'
 			case 'não-metal':				return '#008000'
-			case 'hidrogênio':				return '#aaddaa'
+			case 'hidrogênio':				return '#8c0250'
 			case 'metal de transição':		return '#970700'
 			case 'metal pós-transição':		return '#ff007f'
 			case 'lantanídeo':				return '#054f77'
