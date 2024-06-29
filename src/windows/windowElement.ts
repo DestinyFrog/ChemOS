@@ -1,8 +1,6 @@
 import Atom from "../models/Atom"
 import Window from "../features/window"
-import WindowAtom from "./windowAtom"
 import './windowElement.css'
-import Window_error from "../features/error"
 
 class WindowElement extends Window {
 	public atom:Atom
@@ -32,56 +30,6 @@ class WindowElement extends Window {
 	}
 
 	public destroy(): void {}
-
-	public static start_element_with_info(atom:Atom) {
-		const w2 = new WindowElement(atom)
-		w2.render()
-
-		const w1 = new WindowAtom(atom)
-		const pos = w1.get_position()
-		pos.x = w2.get_position().x + w2.get_size().width
-		pos.y = w2.get_position().y
-		w1.set_position(pos)
-
-		w1.render()
-	}
-
-	public static dialog_search(): HTMLDialogElement {
-		const searchDialog = document.createElement('dialog')
-		searchDialog.id = 'dialog-search-atom'
-		searchDialog.open = true
-
-		const label = document.createElement('h2')
-		label.textContent = 'Procure um Átomo'
-
-		const input = document.createElement('input')
-		input.type = 'text'
-
-		const submitButton = document.createElement('button')
-		submitButton.textContent = 'Search'
-		submitButton.addEventListener('click', async (_) => {
-			try {
-				if ( input.value == '' ) 
-					throw new Error('Input is NULL')
-
-				const atom_txt = input.value
-				const d = await Atom.search_atom(atom_txt)
-				WindowElement.start_element_with_info(d)
-			}
-			catch (err) {
-				const w = new Window_error(<Error> err)
-				w.render()
-			}
-
-			searchDialog.remove()
-		})
-
-		searchDialog.appendChild(label)
-		searchDialog.appendChild(input)
-		searchDialog.appendChild(submitButton)
-
-		return searchDialog
-	}
 }
 
 export default WindowElement

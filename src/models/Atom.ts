@@ -1,3 +1,4 @@
+import Window_error from "../features/error"
 import { atom_schema } from "./atom_schema"
 
 class Atom {
@@ -61,27 +62,31 @@ class Atom {
 		}
 	}
 
-	public static async get_all(): Promise<Atom[]> {
+	public static data: Atom[]
+
+	public static async start_global_data() {
 		try {
 			const response = await fetch('/data.json')
 			const data:atom_schema[] = await response.json()
-			return data.map(d => new Atom(d))
+			Atom.data = data.map(d => new Atom(d))
 		}
 		catch (error) { throw error }
 	}
 
-	public static async search_atom(term:string): Promise<Atom> {
+	public static search_atom(term:string): Atom|null {
 		try {
-			const response = await fetch('/data.json')
-			const data:atom_schema[] = await response.json()
-			const f = data.filter(d => d.symbol == term || d.name == term)
+			const f = Atom.data.filter(d => d.symbol == term || d.name == term)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')
 
-			return new Atom(f[0])
+			return f[0]
 		}
-		catch (error) { throw error }
+		catch (error) {
+			const w = new Window_error(<Error> error)
+			w.render()
+			return null
+		}
 	}
 
 }

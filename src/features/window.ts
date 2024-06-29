@@ -76,8 +76,7 @@ abstract class Window {
 		const button_close_window = document.createElement('button')
 		button_close_window.className = "window-closer"
 		button_close_window.addEventListener('click', _ => {
-			this.destroy()
-			this.div_window.remove()
+			this.close()
 		})
 		this.div_header.appendChild(button_close_window)
 
@@ -85,6 +84,11 @@ abstract class Window {
 		window_label.className = "window-label"
 		window_label.textContent = title
 		this.div_header.appendChild(window_label)
+	}
+
+	public close() {
+		this.destroy()
+		this.div_window.remove()
 	}
 
 	public abstract render(): void

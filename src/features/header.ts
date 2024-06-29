@@ -1,10 +1,10 @@
-import WindowElement from "../windows/windowElement"
+import Window_dialog_search_atom from "../windows/windowDialogSearchAtom"
 import WindowsLinusPauling from "../windows/windowLinusPauling"
 import WindowPeriodicTable from '../windows/windowPeriodicTable'
 import "./header.css"
 
 class Header {
-	public static draw(app:HTMLDivElement) {
+	public static render() {
 		const header = document.getElementById('header')!
 
 		const img_logo = document.createElement('img')
@@ -15,8 +15,8 @@ class Header {
 		const button_search_atom = document.createElement('button')
 		button_search_atom.textContent = 'Átomo'
 		button_search_atom.addEventListener('click', _ => {
-			const search_draw_atom = WindowElement.dialog_search()
-			app.appendChild(search_draw_atom)
+			const window = new Window_dialog_search_atom();
+			window.render()
 		})
 		header.appendChild(button_search_atom)
 
