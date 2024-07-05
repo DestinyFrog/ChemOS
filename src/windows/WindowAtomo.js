@@ -1,17 +1,18 @@
 import Window from "../features/Window"
-import "./WindowAtom.css"
+import "./WindowAtomo.css"
 import { CANVAS_BACKGROUND_COLOR, CIRCUFERENCE, DELAY, ELETRONS_SPEED_LEVELS, ELETRON_COLOR, ELETRON_LAYER_COLOR, ELETRON_RADIUS, ELETRON_SPEED, NUCLEUM_RADIUS, PROTON_COLOR, PROTON_RADIUS } from "../configuration"
 
-class WindowAtom extends Window {
-	_sequenceIndex = 1
-	_eletronsAngle = 0
+class WindowAtomo extends Window {
+	constructor(atomo) {
+		super( `Átomo - ${atomo.nome}` )
+		this.atomo = atomo
 
-	constructor(atom) {
-		super( `Átomo - ${atom.name}` )
-		this.atom = atom
+		this._sequenceIndex = 1
+		this._eletronsAngle = 0
+		this._offset = 40
 
-		this.WIDTH = (this.atom.atomic_radius || 100)*2 + 80
-		this.HEIGHT = (this.atom.atomic_radius || 100)*2 + 80
+		this.WIDTH = (this.atomo.raio_atomico || 100)*2 + this._offset*2
+		this.HEIGHT = (this.atomo.raio_atomico || 100)*2 + this._offset*2
 		this.CENTER = { x: this.WIDTH/2, y: this.HEIGHT/2 }
 	}
 
@@ -52,7 +53,7 @@ class WindowAtom extends Window {
 
 			// Draw Proton
 			this._ctx.fillStyle = PROTON_COLOR
-			for (let i = 0; i < this.atom.number; i++) {
+			for (let i = 0; i < this.atomo.numero_atomico; i++) {
 				const angle = Math.floor( Math.random() * ELETRONS_SPEED_LEVELS[this._sequenceIndex] * CIRCUFERENCE )
 				const distance = Math.floor(Math.random() * NUCLEUM_RADIUS)
 
@@ -67,23 +68,23 @@ class WindowAtom extends Window {
 
 			// Draw Eletron Layer
 			this._ctx.strokeStyle = ELETRON_LAYER_COLOR
-			for (let i = 1; i <= this.atom.period; i++) {
+			for (let i = 1; i <= this.atomo.periodo; i++) {
 				this._ctx.beginPath()
-				this._ctx.arc(this.CENTER.x, this.CENTER.y, (this.atom.atomic_radius || 100)/this.atom.period*i + NUCLEUM_RADIUS, 0, CIRCUFERENCE)
+				this._ctx.arc(this.CENTER.x, this.CENTER.y, (this.atomo.raio_atomico || 100)/this.atomo.periodo*i + NUCLEUM_RADIUS, 0, CIRCUFERENCE)
 				this._ctx.stroke()
 				this._ctx.closePath()
 			}
 
 			// Draw Eletron
 			this._ctx.fillStyle = ELETRON_COLOR
-			for (let i = 0; i < this.atom.period; i++) {
+			for (let i = 0; i < this.atomo.periodo; i++) {
 				// Cada camada
 
-				for (let j = 1; j <= this.atom.shells[i]; j++) {
+				for (let j = 1; j <= this.atomo.camadas[i]; j++) {
 					// Cada eletron da camada
 
-					const angle = ( CIRCUFERENCE / this.atom.shells[i] * j ) + this._eletronsAngle
-					const distance = (this.atom.atomic_radius || 100) / this.atom.period*(1+i) + NUCLEUM_RADIUS
+					const angle = ( CIRCUFERENCE / this.atomo.camadas[i] * j ) + this._eletronsAngle
+					const distance = (this.atomo.raio_atomico || 100) / this.atomo.periodo*(1+i) + NUCLEUM_RADIUS
 
 					this._ctx.beginPath()
 					this._ctx.arc(
@@ -102,4 +103,4 @@ class WindowAtom extends Window {
 	}
 }
 
-export default WindowAtom
+export default WindowAtomo

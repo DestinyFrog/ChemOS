@@ -1,6 +1,6 @@
 import Window from "../features/Window"
-import Atom from "../models/Atom"
-import Window_atom from "./WindowAtom"
+import Atomo from "../models/Atomo"
+import WindowAtomo from "./WindowAtomo"
 import WindowElement from "./WindowElement"
 
 class WindowSearchAtom extends Window {
@@ -26,7 +26,7 @@ class WindowSearchAtom extends Window {
 				throw new Error('Input is NULL')
 
 			const atom_txt = input.value
-			const d = Atom.SearchAtom(atom_txt)
+			const d = Atomo.SearchAtom(atom_txt)
 
 			if (d == null)
 				return
@@ -48,7 +48,7 @@ class WindowSearchAtom extends Window {
 		const w2 = new WindowElement(atom)
 		w2.Render()
 
-		const w1 = new Window_atom(atom)
+		const w1 = new WindowAtomo(atom)
 		w1.position = {
 			x: w2.position.x + w2.size.width,
 			y: w2.position.y

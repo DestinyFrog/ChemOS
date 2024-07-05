@@ -15,6 +15,10 @@
 	gap: 2px;
 }
 
+#container-tabela-periodica {
+	display: flex;
+}
+
 .periodic-table-element {
 	border: 1px solid aliceblue;
 
