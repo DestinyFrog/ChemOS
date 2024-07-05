@@ -1,32 +1,26 @@
 import WindowError from "../features/WindowError"
 
-class Atom {
-	constructor(
-		{name, atomic_radius, eletronegativity, atomic_mass, category, number, period, group, symbol, phase, xpos, ypos, shells, electron_configuration}) {
-		this.name = name
-		this.atomic_radius = atomic_radius
-		this.eletronegativity = eletronegativity
-		this.atomic_mass = atomic_mass
-		this.category = category
-		this.number = number
-		this.period = period
-		this.group = group
-		this.symbol = symbol
-		this.phase = phase
-		this.xpos = xpos
-		this.ypos = ypos
-		this.shells = shells
-		this.electron_configuration = electron_configuration
+class Atomo {
+	constructor(d) {
+		this.nome					= d.nome
+		this.raio_atomico			= d.raio_atomico
+		this.eletronegatividade		= d.eletronegatividade
+		this.massa_atomica			= d.massa_atomica
+		this.categoria				= d.categoria
+		this.numero_atomico			= d.numero_atomico
+		this.periodo				= d.periodo
+		this.familia				= d.familia
+		this.simbolo				= d.simbolo
+		this.fase					= d.fase
+		this.xpos					= d.xpos
+		this.ypos					= d.ypos
+		this.camadas				= d.camadas
+		this.configuracao_eletronica= d.configuracao_eletronica
+		this.color					= this.cor
 	}
 
-	get ligations() {
-		return this.shells[ this.shells.length-1 ] > 3 ?
-		8 - this.shells[ this.shells.length-1 ] :
-		this.shells[ this.shells.length-1 ]
-	}
-
-	get color() {
-		switch(this.category) {
+	get cor() {
+		switch(this.categoria) {
 			case 'gás nobre':				return '#9400d3'
 			case 'metal alcalino':			return '#e5b80b'
 			case 'metal alcalino terroso':	return '#FF6600'
@@ -47,14 +41,14 @@ class Atom {
 		try {
 			const response = await fetch('./data.json')
 			const data = await response.json()
-			this.data = data.map(d => new Atom(d))
+			this.data = data.map(d => new Atomo(d))
 		}
 		catch (error) { throw error }
 	}
 
 	static SearchAtom(term) {
 		try {
-			const f = Atom.data.filter(d => d.symbol == term || d.name == term)
+			const f = Atomo.data.filter(({simbolo, nome}) => simbolo == term || nome == term)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')
@@ -70,4 +64,4 @@ class Atom {
 
 }
 
-export default Atom
+export default Atomo

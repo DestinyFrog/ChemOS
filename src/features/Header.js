@@ -1,40 +1,35 @@
-import WindowSearchAtom from "../windows/WindowSearchAtom"
-import WindowsLinusPauling from "../windows/WindowLinusPauling"
-import WindowPeriodicTable from '../windows/WindowPeriodicTable'
+import WindowSearchAtomo from "../windows/WindowSearchAtomo"
+import WindowLinusPauling from "../windows/WindowLinusPauling"
+import WindowTabelaPeriodica from '../windows/WindowTabelaPeriodica'
 import "./Header.css"
+import logo from './logo.svg'
+import WindowSearchMolecula from "../windows/WindowSearchMolecula"
 
 class Header {
-	static Render() {
-		const header = document.getElementById('header')
+	_header = document.getElementById('header')
+	_img_logo = document.createElement('img')
 
-		const img_logo = document.createElement('img')
-		img_logo.id = 'logo'
-		img_logo.src = './logo.svg'
-		header.appendChild(img_logo)
+	Render() {
+		this._img_logo.id = 'logo'
+		this._img_logo.src = logo
+		this._header.appendChild(this._img_logo)
 
-		const button_search_atom = document.createElement('button')
-		button_search_atom.textContent = 'Átomo'
-		button_search_atom.addEventListener('click', _ => {
-			const w = new WindowSearchAtom();
+		this._GerarBotaoMenu(WindowSearchAtomo,			'Átomo')
+		this._GerarBotaoMenu(WindowTabelaPeriodica,		'Tabela Periódica')
+		this._GerarBotaoMenu(WindowLinusPauling,		'Diagrama de Linus Pauling')
+		this._GerarBotaoMenu(WindowSearchMolecula,		'Molécula')
+	}
+
+	_GerarBotaoMenu(window, nome) {
+		const botao = document.createElement('button')
+		botao.className = 'menu-button'
+		botao.textContent = nome
+		botao.addEventListener('click', _ => {
+			const w = new window()
 			w.Render()
 		})
-		header.appendChild(button_search_atom)
 
-		const button_periodic_table = document.createElement('button')
-		button_periodic_table.textContent = 'Tabela Periódica'
-		button_periodic_table.addEventListener('click', _ => {
-			const w = new WindowPeriodicTable()
-			w.Render()
-		})
-		header.appendChild(button_periodic_table)
-
-		const button_linus_pauling = document.createElement('button')
-		button_linus_pauling.textContent = 'Diagrama de Linus Pauling'
-		button_linus_pauling.addEventListener('click', _ => {
-			const w = new WindowsLinusPauling()
-			w.Render()
-		})
-		header.appendChild(button_linus_pauling)
+		this._header.appendChild(botao)
 	}
 }
 
