@@ -45,7 +45,7 @@ class WindowAtomo extends Window {
 		if (ELETRONS_SPEED_LEVELS[this._sequenceIndex] != 0) {
 
 			if(this._eletronsAngle > CIRCUFERENCE - ELETRON_SPEED)
-				this._eletronsAngle = this._eletronsAngle - 360; else
+				this._eletronsAngle = this._eletronsAngle - CIRCUFERENCE + ELETRON_SPEED; else
 				this._eletronsAngle += ELETRON_SPEED * ELETRONS_SPEED_LEVELS[this._sequenceIndex]
 
 			this._ctx.fillStyle = CANVAS_BACKGROUND_COLOR
