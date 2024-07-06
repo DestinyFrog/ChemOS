@@ -475,7 +475,7 @@
 	},
 	{
 		"nome": "Manganês",
-		"raio_atomico": 156,
+		"raio_atomico": 161,
 		"eletronegatividade": 1.55,
 		"massa_atomica": 54.9380443,
 		"categoria": "metal de transição",
@@ -496,7 +496,7 @@
 	},
 	{
 		"nome": "Ferro",
-		"raio_atomico": 152,
+		"raio_atomico": 156,
 		"eletronegatividade": 1.83,
 		"massa_atomica": 55.8452,
 		"categoria": "metal de transição",
@@ -517,7 +517,7 @@
 	},
 	{
 		"nome": "Cobalto",
-		"raio_atomico": 149,
+		"raio_atomico": 152,
 		"eletronegatividade": 1.88,
 		"massa_atomica": 58.9331944,
 		"categoria": "metal de transição",
@@ -538,7 +538,7 @@
 	},
 	{
 		"nome": "Níquel",
-		"raio_atomico": 145,
+		"raio_atomico": 149,
 		"eletronegatividade": 1.91,
 		"massa_atomica": 58.69344,
 		"categoria": "metal de transição",
@@ -559,7 +559,7 @@
 	},
 	{
 		"nome": "Cobre",
-		"raio_atomico": 142,
+		"raio_atomico": 145,
 		"eletronegatividade": 1.9,
 		"massa_atomica": 63.5463,
 		"categoria": "metal de transição",
@@ -580,7 +580,7 @@
 	},
 	{
 		"nome": "Zinco",
-		"raio_atomico": 136,
+		"raio_atomico": 142,
 		"eletronegatividade": 1.65,
 		"massa_atomica": 65.382,
 		"categoria": "metal de transição",
@@ -601,7 +601,7 @@
 	},
 	{
 		"nome": "Gálio",
-		"raio_atomico": 125,
+		"raio_atomico": 136,
 		"eletronegatividade": 1.81,
 		"massa_atomica": 69.7231,
 		"categoria": "metal pós-transição",
@@ -622,7 +622,7 @@
 	},
 	{
 		"nome": "Germânio",
-		"raio_atomico": 114,
+		"raio_atomico": 125,
 		"eletronegatividade": 2.01,
 		"massa_atomica": 72.6308,
 		"categoria": "metaloide",
@@ -643,7 +643,7 @@
 	},
 	{
 		"nome": "Arsênio",
-		"raio_atomico": 103,
+		"raio_atomico": 114,
 		"eletronegatividade": 2.18,
 		"massa_atomica": 74.9215956,
 		"categoria": "metaloide",
@@ -664,7 +664,7 @@
 	},
 	{
 		"nome": "Selênio",
-		"raio_atomico": 94,
+		"raio_atomico": 103,
 		"eletronegatividade": 2.55,
 		"massa_atomica": 78.9718,
 		"categoria": "não-metal",
@@ -685,7 +685,7 @@
 	},
 	{
 		"nome": "Bromo",
-		"raio_atomico": 88,
+		"raio_atomico": 94,
 		"eletronegatividade": 2.96,
 		"massa_atomica": 79.904,
 		"categoria": "não-metal",
@@ -706,7 +706,7 @@
 	},
 	{
 		"nome": "Criptônio",
-		"raio_atomico": 265,
+		"raio_atomico": 88,
 		"eletronegatividade": 0,
 		"massa_atomica": 83.7982,
 		"categoria": "gás nobre",
@@ -727,7 +727,7 @@
 	},
 	{
 		"nome": "Rubídio",
-		"raio_atomico": 219,
+		"raio_atomico": 265,
 		"eletronegatividade": 0.82,
 		"massa_atomica": 85.46783,
 		"categoria": "metal alcalino",
@@ -749,7 +749,7 @@
 	},
 	{
 		"nome": "Estrôncio",
-		"raio_atomico": 212,
+		"raio_atomico": 219,
 		"eletronegatividade": 0.95,
 		"massa_atomica": 87.621,
 		"categoria": "metal alcalino terroso",
@@ -771,7 +771,7 @@
 	},
 	{
 		"nome": "Ítrio",
-		"raio_atomico": 206,
+		"raio_atomico": 212,
 		"eletronegatividade": 1.22,
 		"massa_atomica": 88.905842,
 		"categoria": "metal de transição",
@@ -793,7 +793,7 @@
 	},
 	{
 		"nome": "Zircônio",
-		"raio_atomico": 198,
+		"raio_atomico": 206,
 		"eletronegatividade": 1.33,
 		"massa_atomica": 91.2242,
 		"categoria": "metal de transição",
@@ -815,7 +815,7 @@
 	},
 	{
 		"nome": "Nióbio",
-		"raio_atomico": 190,
+		"raio_atomico": 198,
 		"eletronegatividade": 1.6,
 		"massa_atomica": 92.906372,
 		"categoria": "metal de transição",
@@ -837,7 +837,7 @@
 	},
 	{
 		"nome": "Molibdênio",
-		"raio_atomico": 183,
+		"raio_atomico": 190,
 		"eletronegatividade": 2.16,
 		"massa_atomica": 95.951,
 		"categoria": "metal de transição",
@@ -859,7 +859,7 @@
 	},
 	{
 		"nome": "Tecnécio",
-		"raio_atomico": 178,
+		"raio_atomico": 183,
 		"eletronegatividade": 1.9,
 		"massa_atomica": 98,
 		"categoria": "metal de transição",
@@ -881,7 +881,7 @@
 	},
 	{
 		"nome": "Rutênio",
-		"raio_atomico": 173,
+		"raio_atomico": 178,
 		"eletronegatividade": 2.2,
 		"massa_atomica": 101.072,
 		"categoria": "metal de transição",
@@ -903,7 +903,7 @@
 	},
 	{
 		"nome": "Ródio",
-		"raio_atomico": 169,
+		"raio_atomico": 173,
 		"eletronegatividade": 2.28,
 		"massa_atomica": 102.905502,
 		"categoria": "metal de transição",
@@ -925,7 +925,7 @@
 	},
 	{
 		"nome": "Paládio",
-		"raio_atomico": 165,
+		"raio_atomico": 169,
 		"eletronegatividade": 2.2,
 		"massa_atomica": 106.421,
 		"categoria": "metal de transição",
@@ -946,7 +946,7 @@
 	},
 	{
 		"nome": "Prata",
-		"raio_atomico": 161,
+		"raio_atomico": 165,
 		"eletronegatividade": 1.93,
 		"massa_atomica": 107.86822,
 		"categoria": "metal de transição",
@@ -968,7 +968,7 @@
 	},
 	{
 		"nome": "Cádmio",
-		"raio_atomico": 156,
+		"raio_atomico": 161,
 		"eletronegatividade": 1.69,
 		"massa_atomica": 112.4144,
 		"categoria": "metal de transição",
@@ -990,7 +990,7 @@
 	},
 	{
 		"nome": "Índio",
-		"raio_atomico": 145,
+		"raio_atomico": 156,
 		"eletronegatividade": 1.78,
 		"massa_atomica": 114.8181,
 		"categoria": "metal pós-transição",
@@ -1012,7 +1012,7 @@
 	},
 	{
 		"nome": "Estanho",
-		"raio_atomico": 133,
+		"raio_atomico": 145,
 		"eletronegatividade": 1.96,
 		"massa_atomica": 118.7107,
 		"categoria": "metal pós-transição",
@@ -1034,7 +1034,7 @@
 	},
 	{
 		"nome": "Antimônio",
-		"raio_atomico": 123,
+		"raio_atomico": 133,
 		"eletronegatividade": 2.05,
 		"massa_atomica": 121.7601,
 		"categoria": "metaloide",
@@ -1056,7 +1056,7 @@
 	},
 	{
 		"nome": "Telúrio",
-		"raio_atomico": 115,
+		"raio_atomico": 123,
 		"eletronegatividade": 2.1,
 		"massa_atomica": 127.603,
 		"categoria": "metaloide",
@@ -1078,7 +1078,7 @@
 	},
 	{
 		"nome": "Iodo",
-		"raio_atomico": 108,
+		"raio_atomico": 115,
 		"eletronegatividade": 2.66,
 		"massa_atomica": 126.904473,
 		"categoria": "não-metal",
@@ -1100,7 +1100,7 @@
 	},
 	{
 		"nome": "Xenônio",
-		"raio_atomico": 298,
+		"raio_atomico": 108,
 		"eletronegatividade": 2.6,
 		"massa_atomica": 131.2936,
 		"categoria": "gás nobre",
@@ -1122,7 +1122,7 @@
 	},
 	{
 		"nome": "Césio",
-		"raio_atomico": 253,
+		"raio_atomico": 298,
 		"eletronegatividade": 0.79,
 		"massa_atomica": 132.905451966,
 		"categoria": "metal alcalino",
@@ -1145,7 +1145,7 @@
 	},
 	{
 		"nome": "Bário",
-		"raio_atomico": null,
+		"raio_atomico": 253,
 		"eletronegatividade": 0.89,
 		"massa_atomica": 137.3277,
 		"categoria": "metal alcalino terroso",
@@ -1191,7 +1191,7 @@
 	},
 	{
 		"nome": "Cério",
-		"raio_atomico": 247,
+		"raio_atomico": null,
 		"eletronegatividade": 1.12,
 		"massa_atomica": 140.1161,
 		"categoria": "lantanídeo",
@@ -1214,7 +1214,7 @@
 	},
 	{
 		"nome": "Praseodímio",
-		"raio_atomico": 206,
+		"raio_atomico": 247,
 		"eletronegatividade": 1.13,
 		"massa_atomica": 140.907662,
 		"categoria": "lantanídeo",
@@ -1237,7 +1237,7 @@
 	},
 	{
 		"nome": "Neodímio",
-		"raio_atomico": 205,
+		"raio_atomico": 206,
 		"eletronegatividade": 1.14,
 		"massa_atomica": 144.2423,
 		"categoria": "lantanídeo",
@@ -1260,7 +1260,7 @@
 	},
 	{
 		"nome": "Promécio",
-		"raio_atomico": 238,
+		"raio_atomico": 205,
 		"eletronegatividade": 1.13,
 		"massa_atomica": 145,
 		"categoria": "lantanídeo",
@@ -1283,7 +1283,7 @@
 	},
 	{
 		"nome": "Samário",
-		"raio_atomico": 231,
+		"raio_atomico": 238,
 		"eletronegatividade": 1.17,
 		"massa_atomica": 150.362,
 		"categoria": "lantanídeo",
@@ -1306,7 +1306,7 @@
 	},
 	{
 		"nome": "Európio",
-		"raio_atomico": 233,
+		"raio_atomico": 231,
 		"eletronegatividade": 1.2,
 		"massa_atomica": 151.9641,
 		"categoria": "lantanídeo",
@@ -1329,7 +1329,7 @@
 	},
 	{
 		"nome": "Gadolínio",
-		"raio_atomico": 225,
+		"raio_atomico": 233,
 		"eletronegatividade": 1.2,
 		"massa_atomica": 157.253,
 		"categoria": "lantanídeo",
@@ -1352,7 +1352,7 @@
 	},
 	{
 		"nome": "Térbio",
-		"raio_atomico": 228,
+		"raio_atomico": 225,
 		"eletronegatividade": 1.1,
 		"massa_atomica": 158.925352,
 		"categoria": "lantanídeo",
@@ -1375,7 +1375,7 @@
 	},
 	{
 		"nome": "Disprósio",
-		"raio_atomico": null,
+		"raio_atomico": 228,
 		"eletronegatividade": 1.22,
 		"massa_atomica": 162.5001,
 		"categoria": "lantanídeo",
@@ -1398,7 +1398,7 @@
 	},
 	{
 		"nome": "Hólmio",
-		"raio_atomico": 226,
+		"raio_atomico": null,
 		"eletronegatividade": 1.23,
 		"massa_atomica": 164.930332,
 		"categoria": "lantanídeo",
@@ -1421,7 +1421,7 @@
 	},
 	{
 		"nome": "Érbio",
-		"raio_atomico": 222,
+		"raio_atomico": 226,
 		"eletronegatividade": 1.24,
 		"massa_atomica": 167.2593,
 		"categoria": "lantanídeo",
@@ -1467,7 +1467,7 @@
 	},
 	{
 		"nome": "Itérbio",
-		"raio_atomico": 217,
+		"raio_atomico": 222,
 		"eletronegatividade": 1.1,
 		"massa_atomica": 173.0451,
 		"categoria": "lantanídeo",
@@ -1490,7 +1490,7 @@
 	},
 	{
 		"nome": "Lutécio",
-		"raio_atomico": 208,
+		"raio_atomico": 217,
 		"eletronegatividade": 1.27,
 		"massa_atomica": 174.96681,
 		"categoria": "lantanídeo",
@@ -1513,7 +1513,7 @@
 	},
 	{
 		"nome": "Háfnio",
-		"raio_atomico": 200,
+		"raio_atomico": 208,
 		"eletronegatividade": 1.3,
 		"massa_atomica": 178.492,
 		"categoria": "metal de transição",
@@ -1536,7 +1536,7 @@
 	},
 	{
 		"nome": "Tântalo",
-		"raio_atomico": 193,
+		"raio_atomico": 200,
 		"eletronegatividade": 1.5,
 		"massa_atomica": 180.947882,
 		"categoria": "metal de transição",
@@ -1559,7 +1559,7 @@
 	},
 	{
 		"nome": "Tungstênio",
-		"raio_atomico": 188,
+		"raio_atomico": 193,
 		"eletronegatividade": 2.36,
 		"massa_atomica": 183.841,
 		"categoria": "metal de transição",
@@ -1582,7 +1582,7 @@
 	},
 	{
 		"nome": "Rênio",
-		"raio_atomico": 185,
+		"raio_atomico": 188,
 		"eletronegatividade": 1.9,
 		"massa_atomica": 186.2071,
 		"categoria": "metal de transição",
@@ -1605,7 +1605,7 @@
 	},
 	{
 		"nome": "Ósmio",
-		"raio_atomico": 180,
+		"raio_atomico": 185,
 		"eletronegatividade": 2.2,
 		"massa_atomica": 190.233,
 		"categoria": "metal de transição",
@@ -1628,7 +1628,7 @@
 	},
 	{
 		"nome": "Irídio",
-		"raio_atomico": 177,
+		"raio_atomico": 180,
 		"eletronegatividade": 2.2,
 		"massa_atomica": 192.2173,
 		"categoria": "metal de transição",
@@ -1651,7 +1651,7 @@
 	},
 	{
 		"nome": "Platina",
-		"raio_atomico": 174,
+		"raio_atomico": 177,
 		"eletronegatividade": 2.28,
 		"massa_atomica": 195.0849,
 		"categoria": "metal de transição",
@@ -1674,7 +1674,7 @@
 	},
 	{
 		"nome": "Ouro",
-		"raio_atomico": 171,
+		"raio_atomico": 174,
 		"eletronegatividade": 2.54,
 		"massa_atomica": 196.9665695,
 		"categoria": "metal de transição",
@@ -1697,7 +1697,7 @@
 	},
 	{
 		"nome": "Mercúrio",
-		"raio_atomico": 156,
+		"raio_atomico": 171,
 		"eletronegatividade": 2,
 		"massa_atomica": 200.5923,
 		"categoria": "metal de transição",
@@ -1720,7 +1720,7 @@
 	},
 	{
 		"nome": "Tálio",
-		"raio_atomico": 154,
+		"raio_atomico": 156,
 		"eletronegatividade": 2.04,
 		"massa_atomica": 204.38,
 		"categoria": "metal pós-transição",
@@ -1743,7 +1743,7 @@
 	},
 	{
 		"nome": "Chumbo",
-		"raio_atomico": 143,
+		"raio_atomico": 154,
 		"eletronegatividade": 2.33,
 		"massa_atomica": 207.21,
 		"categoria": "metal pós-transição",
@@ -1766,7 +1766,7 @@
 	},
 	{
 		"nome": "Bismuto",
-		"raio_atomico": 135,
+		"raio_atomico": 143,
 		"eletronegatividade": 2.02,
 		"massa_atomica": 208.980401,
 		"categoria": "metal pós-transição",
@@ -1789,7 +1789,7 @@
 	},
 	{
 		"nome": "Polônio",
-		"raio_atomico": null,
+		"raio_atomico": 135,
 		"eletronegatividade": 2,
 		"massa_atomica": 209,
 		"categoria": "metal pós-transição",
@@ -1812,7 +1812,7 @@
 	},
 	{
 		"nome": "Astatínio",
-		"raio_atomico": 120,
+		"raio_atomico": null,
 		"eletronegatividade": 2.2,
 		"massa_atomica": 210,
 		"categoria": "metaloide",
@@ -1835,7 +1835,7 @@
 	},
 	{
 		"nome": "Radônio",
-		"raio_atomico": 270,
+		"raio_atomico": 120,
 		"eletronegatividade": 0,
 		"massa_atomica": 222,
 		"categoria": "gás nobre",
@@ -1858,7 +1858,7 @@
 	},
 	{
 		"nome": "Frâncio",
-		"raio_atomico": null,
+		"raio_atomico": 270,
 		"eletronegatividade": 0.7,
 		"massa_atomica": 223,
 		"categoria": "metal alcalino",
