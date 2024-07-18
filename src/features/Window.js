@@ -1,4 +1,5 @@
 import './Window.css'
+import CloseIcon from './close.svg'
 
 class Window {
 	drag_position = { x:0, y:0} 
@@ -71,8 +72,9 @@ class Window {
 		app.appendChild(this.div_footer)
 		this.div_window.appendChild(this.div_footer)
 
-		const button_close_window = document.createElement('button')
+		const button_close_window = document.createElement('img')
 		button_close_window.className = "window-closer"
+		button_close_window.src = CloseIcon
 		button_close_window.addEventListener('click', _ => {
 			this.Close()
 		})
