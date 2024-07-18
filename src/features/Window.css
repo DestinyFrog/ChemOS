@@ -2,17 +2,20 @@
 .window {
 	border: 2px solid black;
 	border-radius: 3px;
-	padding: 6px;
+	padding: 4px;
 	background-color: #111122;
+
+	width: min-content;
+	height: min-content;
 
 	position: fixed;
 }
 
 .window-header {
-	max-height: auto;
-	margin-bottom: 2px;
-
+	margin: 6px;
+	margin-top: 0;
 	display: flex;
+	justify-content: space-between;
 }
 
 .window-footer {
@@ -22,7 +25,6 @@
 }
 
 .window-label {
-	margin-left: 10px;
 	-webkit-user-select: none; /* Safari */
 	-ms-user-select: none; /* IE 10 and IE 11 */
 	user-select: none; /* Standard syntax */
@@ -34,16 +36,24 @@
 	background-color: black;
 	margin: 0;
 	padding: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* min-width: 160px; */
 }
 
 .window-closer {
-	width: auto;
-	padding: 2px;
-	margin: 0;
+	width: 10px;
+	aspect-ratio: 1/1;
+	margin-bottom: 2px;
 	font-size: 10px;
 	width: 20px;
 	height: 20px;
-
+	border-radius: 50%;
+	border: 0;
+	order: 10;
+	margin-left: 5px;
 }
 
 .window-closer:hover {
@@ -52,4 +62,8 @@
 
 .window-closer::before {
 	content: 'X';
+	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

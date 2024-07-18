@@ -17,7 +17,7 @@ class Header {
 		this._GerarBotaoMenu(WindowSearchAtomo,			'Átomo')
 		this._GerarBotaoMenu(WindowTabelaPeriodica,		'Tabela Periódica')
 		this._GerarBotaoMenu(WindowLinusPauling,		'Diagrama de Linus Pauling')
-		// this._GerarBotaoMenu(WindowSearchMolecula,		'Molécula')
+		this._GerarBotaoMenu(WindowSearchMolecula,		'Molécula')
 	}
 
 	_GerarBotaoMenu(window, nome) {

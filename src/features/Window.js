@@ -67,7 +67,7 @@ class Window {
 		this.div_window.appendChild(this.div_container)
 
 		this.div_footer = document.createElement('div')
-		this.div_header.className = "window-footer"
+		this.div_footer.className = "window-footer"
 		app.appendChild(this.div_footer)
 		this.div_window.appendChild(this.div_footer)
 
