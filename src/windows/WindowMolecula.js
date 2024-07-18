@@ -1,3 +1,4 @@
+import { Capitalize } from "../configuration"
 import Window from "../features/Window"
 
 class WindowMolecula extends Window {
@@ -11,17 +12,19 @@ class WindowMolecula extends Window {
 	smaller_y = 0
 
 	geometria_molecular = {
-		"tetraédrica": [90, 210, 260, 350],
-		"piramidal": [350, 210, 260],
+		"octaédrica": [270, 195, 165, 90, 345, 15],
+		"bipiramidal": [270, 180, 90, 345, 15],
+		"tetraédrica": [270, 170, 70, 25],
+		"piramidal": [160, 70, 25],
+		"trigonal plana": [30, 150, 270],
 		"angular V": [80, 190],
-		"trigonal plana": [300, 120],
-		"angular": [120, 240],
-		"linear": [180, 0],
+		"angular": [149.6, 30,4],
+		"linear": [0, 180],
 		"binaria": [180, 0]
 	}
 
 	constructor(data) {
-		super(`Molécula - ${data.nome}`)
+		super( Capitalize(data.nome) )
 		this.data = data
 	}
 
@@ -32,9 +35,9 @@ class WindowMolecula extends Window {
 		// Setup Context
 		const ctx = canvas.getContext('2d')
 
-		this.walk(this.data.atomos, 
+		this.walk(this.data.atomos,
 			(atomo, ordem, camada, pai) => {
-				let geo = this.geometria_molecular[ pai?.geometria || "linear" ][ordem] || 0
+				const geo = this.geometria_molecular[ pai?.geometria || "linear" ][ordem] || 0
 	
 				atomo.angle = (pai?.angle || 0) + (geo/180*Math.PI) * (pai?.angle>Math.PI?-1:1)
 				atomo.pos = {
@@ -42,18 +45,8 @@ class WindowMolecula extends Window {
 					y: (pai?.pos.y || 0) + Math.sin(atomo.angle) * (camada > 0 ? this.radius : 0)
 				}
 
-				if (pai) {
-					atomo.line = {
-						a: {
-							x: (pai?.pos.x || 0) + Math.cos(atomo.angle || 0) * this.offset_line,
-							y: (pai?.pos.y || 0) + Math.sin(atomo.angle || 0) * this.offset_line
-						},
-						b: {
-							x: atomo.pos.x + Math.cos(atomo.angle+Math.PI || 0) * this.offset_line,
-							y: atomo.pos.y + Math.sin(atomo.angle+Math.PI || 0) * this.offset_line
-						}
-					}
-				}
+				if (pai)
+					atomo.line = this.draw_lines(atomo, pai, ordem)
 			}
 		)
 
@@ -66,37 +59,29 @@ class WindowMolecula extends Window {
 			const _y = y + -this.smaller_y + this.offset
 			this.setup_context(ctx)
 
-			ctx.beginPath()
-			ctx.arc(_x, _y, this.offset_line, 0, Math.PI*2)
-			ctx.fillStyle = "#400"
-			ctx.fill()
-
-			ctx.beginPath()
-			ctx.arc(_x, _y, this.offset_line, 0, Math.PI*2)
-			ctx.stroke()
-			ctx.closePath()
-
 			ctx.fillStyle = "#fff"
 			ctx.fillText(simbolo, _x, _y)
 
 			if (line) {
-				let lax = line.a.x + -this.smaller_x + this.offset
-				let lay = line.a.y + -this.smaller_y + this.offset
-				let lbx = line.b.x + -this.smaller_x + this.offset
-				let lby = line.b.y + -this.smaller_y + this.offset
+				line.forEach( ({a,b}) => {
+					let lax = a.x + -this.smaller_x + this.offset
+					let lay = a.y + -this.smaller_y + this.offset
+					let lbx = b.x + -this.smaller_x + this.offset
+					let lby = b.y + -this.smaller_y + this.offset
 
-				ctx.beginPath()
-				ctx.moveTo( lax, lay )
-				ctx.lineTo( lbx, lby )
-				ctx.stroke()
+					ctx.beginPath()
+					ctx.moveTo( lax, lay )
+					ctx.lineTo( lbx, lby )
+					ctx.stroke()
+				})
 			}
 		})
 	}
 
 	setup_context(ctx) {
-		ctx.lineWidth = 3
+		ctx.lineWidth = 1
 		ctx.fillStyle = "#ffffff"
-		ctx.font = 'bold 20px serif'
+		ctx.font = 'bold 16px serif'
 		ctx.textAlign = 'center'
 		ctx.textBaseline =  'middle'
 		ctx.strokeStyle = '#ffffff'
@@ -114,12 +99,88 @@ class WindowMolecula extends Window {
 		this.HEIGHT = (-this.smaller_y + this.bigger_y) + this.offset*2
 	}
 
+	draw_lines(atomo, pai, ordem) {
+		switch (pai.ligacoes[ordem].eletrons) {
+			case 1:
+				return [
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos(atomo.angle || 0) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin(atomo.angle || 0) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos(atomo.angle+Math.PI || 0) * this.offset_line,
+							y: atomo.pos.y + Math.sin(atomo.angle+Math.PI || 0) * this.offset_line
+						}
+					}
+				]
+
+			case 2:
+				return [
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos((atomo.angle || 0) - 0.2) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin((atomo.angle || 0) - 0.2) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos((atomo.angle+Math.PI || 0) + 0.2) * this.offset_line,
+							y: atomo.pos.y + Math.sin((atomo.angle+Math.PI || 0) + 0.2) * this.offset_line
+						}
+					},
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos((atomo.angle || 0) + 0.2) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin((atomo.angle || 0) + 0.2) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos((atomo.angle+Math.PI || 0) - 0.2) * this.offset_line,
+							y: atomo.pos.y + Math.sin((atomo.angle+Math.PI || 0) - 0.2) * this.offset_line
+						}
+					}
+				]
+
+			case 3:
+				return [
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos(atomo.angle || 0) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin(atomo.angle || 0) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos(atomo.angle+Math.PI || 0) * this.offset_line,
+							y: atomo.pos.y + Math.sin(atomo.angle+Math.PI || 0) * this.offset_line
+						}
+					},
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos((atomo.angle || 0) - 0.3) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin((atomo.angle || 0) - 0.3) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos((atomo.angle+Math.PI || 0) + 0.3) * this.offset_line,
+							y: atomo.pos.y + Math.sin((atomo.angle+Math.PI || 0) + 0.3) * this.offset_line
+						}
+					},
+					{
+						a: {
+							x: (pai?.pos.x || 0) + Math.cos((atomo.angle || 0) + 0.3) * this.offset_line,
+							y: (pai?.pos.y || 0) + Math.sin((atomo.angle || 0) + 0.3) * this.offset_line
+						},
+						b: {
+							x: atomo.pos.x + Math.cos((atomo.angle+Math.PI || 0) - 0.3) * this.offset_line,
+							y: atomo.pos.y + Math.sin((atomo.angle+Math.PI || 0) - 0.3) * this.offset_line
+						}
+					}
+				]
+		}
+	}
+
 	walk(lista, f, index=0, ordem=0, camadas=0, pai=null) {
 		f(lista[index], ordem, camadas, pai)
 		camadas++
 		lista[index].ligacoes?.forEach(
-			(p, idx) =>
-				this.walk(lista, f, p.para, idx, camadas, lista[index])
+			(d, idx) =>
+				this.walk(lista, f, d.para, idx, camadas, lista[index])
 		)
 	}
 }

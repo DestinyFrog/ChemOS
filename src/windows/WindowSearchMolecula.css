@@ -1,0 +1,23 @@
+
+#search-input {
+	width: 200px;
+	outline: none;
+}
+
+#recomendation-list {
+	list-style: none;
+	margin: 4px 0px;
+	position: absolute;
+	background-color: #234;
+	/* border: 1px solid white; */
+	width: 200px;
+}
+
+#recomendation-list li {
+	padding: 6px;
+}
+
+#recomendation-list li:hover {
+	color: gold;
+	background-color: #444400;
+}

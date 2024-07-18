@@ -1,6 +1,8 @@
+import { Capitalize } from "../configuration"
 import Window from "../features/Window"
 import Molecula from "../models/Molecula"
 import WindowMolecula from "./WindowMolecula"
+import "./WindowSearchMolecula.css"
 
 class WindowSearchMolecula extends Window {
 	constructor() {
@@ -9,21 +11,37 @@ class WindowSearchMolecula extends Window {
 
 	Render() {
 		const searchDialog = document.createElement('div')
-		searchDialog.id = 'dialog-search-atom'
+		searchDialog.id = 'dialog-search-molecula'
 		searchDialog.style.padding = '10px'
 
 		const label = document.createElement('h2')
 		label.textContent = 'Procure uma Molécula'
 
-		const input = document.createElement('select')
-		Molecula.GetAll()
-		.then(data => {
-			data.forEach(({nome, formula}) => {
-				const option = document.createElement('option')
-				option.innerText = `[${formula}] ${nome}`
-				option.value = nome
-				input.appendChild(option)
-			})
+		const input = document.createElement('input')
+		input.id = 'search-input'
+		input.type = 'text'
+
+		const recomendation = document.createElement('ul')
+		recomendation.id = 'recomendation-list'
+
+		input.addEventListener('change', _ => {
+			const txt = input.value
+			Molecula.SearchForMany(txt)
+			.then( data => {
+				recomendation.innerHTML = ""
+
+				data.forEach(({nome, formula}) => {
+					const line = document.createElement('li')
+					line.innerText = `${formula} - ${ Capitalize(nome) }`
+					line.value = nome
+					line.addEventListener('click', _ => {
+						recomendation.innerHTML = ""
+						input.value = nome
+					} )
+					recomendation.appendChild(line)
+					
+				})
+			} )
 		})
 
 		const submitButton = document.createElement('button')
@@ -44,6 +62,7 @@ class WindowSearchMolecula extends Window {
 		searchDialog.appendChild(label)
 		searchDialog.appendChild(input)
 		searchDialog.appendChild(submitButton)
+		searchDialog.appendChild(recomendation)
 
 		super.AddToContainer(searchDialog)
 	}
