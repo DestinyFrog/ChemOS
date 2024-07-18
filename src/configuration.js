@@ -29,3 +29,17 @@ export const NUCLEUM_RADIUS = 10
 
 // Frames
 export const DELAY = 40
+
+/**
+ * Change each first letter of word into a Upper Case
+ * @param {string} text
+ * @return {string}
+ */
+export function Capitalize(text) {
+	return text.split(' ').map(d => {
+		if ( ['de'].includes(d) ) return d
+		const e = d.split('')
+		e[0] = e[0].toUpperCase()
+		return e.join('')
+	} ).join(' ')
+}
