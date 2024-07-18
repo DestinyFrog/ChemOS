@@ -25,12 +25,12 @@ class Atomo {
 			case 'metal alcalino':			return '#e5b80b'
 			case 'metal alcalino terroso':	return '#FF6600'
 			case 'metaloide':				return '#8db600'
-			case 'não-metal':				return '#008000'
+			case 'ametal':					return '#008000'
 			case 'hidrogênio':				return '#8c0250'
 			case 'metal de transição':		return '#970700'
-			case 'metal pós-transição':		return '#ff007f'
+			case 'outros metais':			return '#ff007f'
 			case 'lantanídeo':				return '#054f77'
-			case 'actínideo':				return '#4169e1'
+			case 'actinídeo':				return '#4169e1'
 			case 'desconhecido':			return '#333333'
 			default:						return '#000000'
 		}
@@ -39,7 +39,7 @@ class Atomo {
 	static data = null
 	static async StartGlobalData() {
 		try {
-			const response = await fetch('./data.json')
+			const response = await fetch('./atomo.json')
 			const data = await response.json()
 			this.data = data.map(d => new Atomo(d))
 		}

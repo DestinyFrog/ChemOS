@@ -1,0 +1,183 @@
+[
+	{
+		"nome": "ácido perclórico",
+		"formula": "HClO_4",
+		"atomos": [
+			{
+				"simbolo": "Cl",
+				"geometria": "tetraédrica",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":2},
+					{"para":3, "eletrons":2},
+					{"para":4, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":5, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{
+		"nome": "ácido clórico",
+		"formula": "HClO_3",
+		"atomos": [
+			{
+				"simbolo": "Cl",
+				"geometria": "piramidal",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":2},
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":4, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{
+		"nome": "ácido cloroso",
+		"formula": "HClO_2",
+		"atomos": [
+			{
+				"simbolo": "Cl",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{
+		"nome": "ácido hipocloroso",
+		"formula": "HClO",
+		"atomos": [
+			{
+				"simbolo": "O",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{
+		"nome": "ácido clorídrico",
+		"formula": "HCl",
+		"atomos": [
+			{
+				"simbolo": "Cl",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	}
+
+	,
+	{
+		"nome": "ácido fosfórico",
+		"formula": "H_3PO_4",
+		"atomos": [
+			{
+				"simbolo": "P",
+				"geometria": "tetraédrica",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1},
+					{"para":4, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":5, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":6, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O",
+				"geometria": "angular V",
+				"ligacoes": [
+					{"para":7, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	}
+
+]
