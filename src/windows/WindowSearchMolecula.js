@@ -1,6 +1,7 @@
 import Window from "../features/Window"
 import Molecula from "../models/Molecula"
-import WindowMolecula3D from "./WindowMolecula3D"
+import WindowMoleculaInfo from "./WindowMoleculaInfo"
+import WindowMolecula from "./WindowMolecula"
 
 class WindowSearchMolecula extends Window {
 	constructor() {
@@ -15,8 +16,16 @@ class WindowSearchMolecula extends Window {
 		const label = document.createElement('h2')
 		label.textContent = 'Procure uma Molécula'
 
-		const input = document.createElement('input')
-		input.type = 'text'
+		const input = document.createElement('select')
+		Molecula.GetAll()
+		.then(data => {
+			data.forEach(({nome, formula}) => {
+				const option = document.createElement('option')
+				option.innerText = `[${formula}] ${nome}`
+				option.value = nome
+				input.appendChild(option)
+			})
+		})
 
 		const submitButton = document.createElement('button')
 		submitButton.textContent = 'Search'
@@ -40,13 +49,16 @@ class WindowSearchMolecula extends Window {
 		super.AddToContainer(searchDialog)
 	}
 
-	_RedirectMolecula(molecula_txt) {
+	async _RedirectMolecula(molecula_txt) {
 		super.Close()
 
-		const molecula_data = Molecula.SplitMolecule(molecula_txt)
-		const molecula = new Molecula(molecula_data)
-		const w = new WindowMolecula3D(molecula)
-		w.Render()
+		const molecula = await Molecula.SearchFor(molecula_txt)
+
+		// const w = new WindowMoleculaInfo(molecula)
+		// w.Render()
+
+		const w1 = new WindowMolecula(molecula)
+		w1.Render()
 	}
 }
 
