@@ -1,6 +1,5 @@
 import Window from "../features/Window"
 import Molecula from "../models/Molecula"
-import WindowMoleculaInfo from "./WindowMoleculaInfo"
 import WindowMolecula from "./WindowMolecula"
 
 class WindowSearchMolecula extends Window {
@@ -53,9 +52,6 @@ class WindowSearchMolecula extends Window {
 		super.Close()
 
 		const molecula = await Molecula.SearchFor(molecula_txt)
-
-		// const w = new WindowMoleculaInfo(molecula)
-		// w.Render()
 
 		const w1 = new WindowMolecula(molecula)
 		w1.Render()
