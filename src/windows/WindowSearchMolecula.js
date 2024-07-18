@@ -19,12 +19,14 @@ class WindowSearchMolecula extends Window {
 
 		const input = document.createElement('input')
 		input.id = 'search-input'
+		input.name = 'molecula'
+		input.autocomplete = false
 		input.type = 'text'
 
 		const recomendation = document.createElement('ul')
 		recomendation.id = 'recomendation-list'
 
-		input.addEventListener('change', _ => {
+		input.addEventListener('input', _ => {
 			const txt = input.value
 			Molecula.SearchForMany(txt)
 			.then( data => {
