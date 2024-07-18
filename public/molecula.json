@@ -1,16 +1,529 @@
 [
-	{
-		"nome": "ácido perclórico",
+	{ "nome": "água",
+	"formula": "H_2O",
+	"atomos": [
+			{
+				"simbolo": "O",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "trifluoreto de boro",
+	"formula": "BF_3",
+	"atomos": [
+			{
+				"simbolo": "B",
+				"geometria": "trigonal plana",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			}
+		]
+	},
+	{ "nome": "metano",
+	"formula": "CH_4",
+	"atomos": [
+			{
+				"simbolo": "C",
+				"geometria": "tetraédrica",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1},
+					{"para":4, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "trifluoreto de nitrogênio",
+	"formula": "NF_3",
+	"atomos": [
+			{
+				"simbolo": "N",
+				"geometria": "piramidal",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			}
+		]
+	},
+	{ "nome": "gás nitrogênio",
+	"formula": "N_2",
+	"atomos": [
+			{
+				"simbolo": "N",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":3}
+				]
+			},
+			{
+				"simbolo": "N"
+			}
+		]
+	},
+	{ "nome": "gás oxigênio",
+	"formula": "O_2",
+	"atomos": [
+			{
+				"simbolo": "O",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "gás hidrogênio",
+	"formula": "H_2",
+	"atomos": [
+			{
+				"simbolo": "H",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "ozônio",
+	"formula": "O_3",
+	"atomos": [
+			{
+				"simbolo": "O+",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O-"
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "óxido nitroso",
+	"formula": "N_2O",
+	"atomos": [
+			{
+				"simbolo": "N+",
+				"geometria": "linear",
+				"ligacoes": [
+					{"para":1, "eletrons":3},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "N"
+			},
+			{
+				"simbolo": "O-"
+			}
+		]
+	},
+	{ "nome": "óxido nítrico",
+	"formula": "N_2O",
+	"atomos": [
+			{
+				"simbolo": "N",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "monóxido de carbono",
+	"formula": "CO",
+	"atomos": [
+			{
+				"simbolo": "C",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":3}
+				]
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "dióxido de carbono",
+	"formula": "CO_2",
+	"atomos": [
+			{
+				"simbolo": "C",
+				"geometria": "linear",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "dióxido de nitrogênio",
+	"formula": "NO_2",
+	"atomos": [
+			{
+				"simbolo": "N+",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O-"
+			}
+		]
+	},
+	{ "nome": "dióxido de enxofre",
+	"formula": "SO_2",
+	"atomos": [
+			{
+				"simbolo": "S",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "cianeto de hidrogênio",
+	"formula": "HCN",
+	"atomos": [
+			{
+				"simbolo": "C",
+				"geometria": "linear",
+				"ligacoes": [
+					{"para":1, "eletrons":3},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "N"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "amônia",
+	"formula": "NH_3",
+	"atomos": [
+			{
+				"simbolo": "N",
+				"geometria": "piramidal",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "trióxido de enxofre",
+	"formula": "SO_3",
+	"atomos": [
+			{
+				"simbolo": "S",
+				"geometria": "trigonal plana",
+				"ligacoes": [
+					{"para":1, "eletrons":2},
+					{"para":2, "eletrons":2},
+					{"para":3, "eletrons":2}
+				]
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			},
+			{
+				"simbolo": "O"
+			}
+		]
+	},
+	{ "nome": "tricloreto de fósforo",
+	"formula": "PCl_3",
+	"atomos": [
+			{
+				"simbolo": "P",
+				"geometria": "piramidal",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			}
+		]
+	},
+	{ "nome": "pentacloreto de fósforo",
+	"formula": "PCl_5",
+	"atomos": [
+			{
+				"simbolo": "P",
+				"geometria": "bipiramidal",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1},
+					{"para":4, "eletrons":1},
+					{"para":5, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			},
+			{
+				"simbolo": "Cl"
+			}
+		]
+	},
+	{ "nome": "hexafluoreto de enxofre",
+	"formula": "SF_6",
+	"atomos": [
+			{
+				"simbolo": "S",
+				"geometria": "octaédrica",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1},
+					{"para":4, "eletrons":1},
+					{"para":5, "eletrons":1},
+					{"para":6, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			},
+			{
+				"simbolo": "F"
+			}
+		]
+	},
+	{ "nome": "etino",
+	"formula": "C_2H_2",
+	"atomos": [
+			{
+				"simbolo": "C",
+				"geometria": "linear",
+				"ligacoes": [
+					{"para":1, "eletrons":3},
+					{"para": 3, "eletrons": 1}
+				]
+			},
+			{
+				"simbolo": "C",
+				"geometria": "linear",
+				"ligacoes": [
+					{"para": 2, "eletrons": 1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "cloreto de sódio",
+	"formula": "NaCl",
+	"atomos": [
+			{
+				"simbolo": "Cl-",
+				"geometria": "binaria",
+				"ligacoes": [
+					{"para":1, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Na+"
+			}
+		]
+	},
+	{ "nome": "hidróxido de sódio",
+	"formula": "NaOH",
+	"atomos": [
+			{
+				"simbolo": "O-",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Na+"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "hidróxido de lítio",
+	"formula": "LiOH",
+	"atomos": [
+			{
+				"simbolo": "O-",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "Li+"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "hidróxido de potássio",
+	"formula": "KOH",
+	"atomos": [
+			{
+				"simbolo": "O-",
+				"geometria": "angular",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "K+"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
+	{ "nome": "ácido perclórico",
 		"formula": "HClO_4",
 		"atomos": [
 			{
 				"simbolo": "Cl",
 				"geometria": "tetraédrica",
 				"ligacoes": [
-					{"para":1, "eletrons":2},
+					{"para":1, "eletrons":1},
 					{"para":2, "eletrons":2},
 					{"para":3, "eletrons":2},
-					{"para":4, "eletrons":1}
+					{"para":4, "eletrons":2}
 				]
 			},
 			{
@@ -34,17 +547,16 @@
 			}
 		]
 	},
-	{
-		"nome": "ácido clórico",
+	{ "nome": "ácido clórico",
 		"formula": "HClO_3",
 		"atomos": [
 			{
 				"simbolo": "Cl",
 				"geometria": "piramidal",
 				"ligacoes": [
-					{"para":1, "eletrons":2},
+					{"para":1, "eletrons":1},
 					{"para":2, "eletrons":2},
-					{"para":3, "eletrons":1}
+					{"para":3, "eletrons":2}
 				]
 			},
 			{
@@ -65,16 +577,15 @@
 			}
 		]
 	},
-	{
-		"nome": "ácido cloroso",
+	{ "nome": "ácido cloroso",
 		"formula": "HClO_2",
 		"atomos": [
 			{
 				"simbolo": "Cl",
 				"geometria": "angular V",
 				"ligacoes": [
-					{"para":1, "eletrons":2},
-					{"para":2, "eletrons":1}
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":2}
 				]
 			},
 			{
@@ -92,8 +603,7 @@
 			}
 		]
 	},
-	{
-		"nome": "ácido hipocloroso",
+	{ "nome": "ácido hipocloroso",
 		"formula": "HClO",
 		"atomos": [
 			{
@@ -112,8 +622,7 @@
 			}
 		]
 	},
-	{
-		"nome": "ácido clorídrico",
+	{ "nome": "ácido clorídrico",
 		"formula": "HCl",
 		"atomos": [
 			{
@@ -128,56 +637,4 @@
 			}
 		]
 	}
-
-	,
-	{
-		"nome": "ácido fosfórico",
-		"formula": "H_3PO_4",
-		"atomos": [
-			{
-				"simbolo": "P",
-				"geometria": "tetraédrica",
-				"ligacoes": [
-					{"para":1, "eletrons":1},
-					{"para":2, "eletrons":1},
-					{"para":3, "eletrons":1},
-					{"para":4, "eletrons":2}
-				]
-			},
-			{
-				"simbolo": "O"
-			},
-			{
-				"simbolo": "O",
-				"geometria": "angular V",
-				"ligacoes": [
-					{"para":5, "eletrons":1}
-				]
-			},
-			{
-				"simbolo": "O",
-				"geometria": "angular V",
-				"ligacoes": [
-					{"para":6, "eletrons":1}
-				]
-			},
-			{
-				"simbolo": "O",
-				"geometria": "angular V",
-				"ligacoes": [
-					{"para":7, "eletrons":1}
-				]
-			},
-			{
-				"simbolo": "H"
-			},
-			{
-				"simbolo": "H"
-			},
-			{
-				"simbolo": "H"
-			}
-		]
-	}
-
 ]
