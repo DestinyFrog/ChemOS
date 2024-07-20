@@ -1,7 +1,7 @@
 import { Capitalize } from "../configuration"
-import Window from "../features/Window"
+import Win from "../features/Win"
 
-class WindowMolecula extends Window {
+class WindowMolecula extends Win {
 	offset = 30
 	offset_line = 15
 	radius = 80
@@ -20,7 +20,7 @@ class WindowMolecula extends Window {
 		"angular V": [80, 190],
 		"angular": [149.6, 30,4],
 		"linear": [0, 180],
-		"binaria": [180, 0]
+		"binaria": [180]
 	}
 
 	constructor(data) {

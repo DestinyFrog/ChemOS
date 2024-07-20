@@ -1,5 +1,5 @@
 import { Capitalize } from "../configuration"
-import Window from "../features/Window"
+import Window from "../features/Win"
 import Molecula from "../models/Molecula"
 import WindowMolecula from "./WindowMolecula"
 import "./WindowSearchMolecula.css"

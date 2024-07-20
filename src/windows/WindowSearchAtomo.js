@@ -1,9 +1,9 @@
-import Window from "../features/Window"
+import Win from "../features/Win"
 import Atomo from "../models/Atomo"
 import WindowAtomo from "./WindowAtomo"
-import WindowElement from "./WindowElement"
+import WindowElemento from "./WindowElemento"
 
-class WindowSearchAtom extends Window {
+class WindowSearchAtom extends Win {
 	constructor() {
 		super("Procure por um Átomo")
 	}
@@ -25,13 +25,13 @@ class WindowSearchAtom extends Window {
 			if ( input.value == '' ) 
 				throw new Error('Input is NULL')
 
-			const atom_txt = input.value
-			const d = Atomo.SearchAtom(atom_txt)
+			const termo = input.value
+			const atomo = Atomo.ProcurarPorTermo(termo)
 
-			if (d == null)
+			if (atomo == null)
 				return
 
-			this._RedirectElement(d)
+			this.redirecionar_elemento(atomo)
 			searchDialog.remove()
 		})
 
@@ -42,13 +42,17 @@ class WindowSearchAtom extends Window {
 		super.AddToContainer(searchDialog)
 	}
 
-	_RedirectElement(atom) {
+	/**
+	 * Redireciona para um novo elemento
+	 * @param {string} atomo
+	 */
+	redirecionar_elemento(atomo) {
 		super.Close()
 
-		const w2 = new WindowElement(atom)
+		const w2 = new WindowElemento(atomo)
 		w2.Render()
 
-		const w1 = new WindowAtomo(atom)
+		const w1 = new WindowAtomo(atomo)
 		w1.position = {
 			x: w2.position.x + w2.size.width,
 			y: w2.position.y

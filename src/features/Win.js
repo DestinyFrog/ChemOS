@@ -1,7 +1,7 @@
-import './Window.css'
+import './Win.css'
 import CloseIcon from './close.svg'
 
-class Window {
+class Win {
 	drag_position = { x:0, y:0} 
 	before_drag_position = { x:0, y:0}
 
@@ -123,4 +123,4 @@ class Window {
 	}
 }
 
-export default Window
+export default Win

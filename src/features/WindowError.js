@@ -1,4 +1,4 @@
-import Window from "./Window"
+import Window from "./Win"
 import "./WindowError.css"
 
 class WindowError extends Window {

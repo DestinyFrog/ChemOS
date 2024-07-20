@@ -1,9 +1,11 @@
-import Window from "../features/Window"
-import './WindowElement.css'
+import { Capitalize } from "../configuration"
+import Win from "../features/Win"
+import Atomo from "../models/Atomo"
+import './WindowElemento.css'
 
-class WindowElement extends Window {
+class WindowElemento extends Win {
 	constructor(atomo) {
-		super(`${atomo.nome}`)
+		super(`${Capitalize(atomo.nome)}`)
 		this.atomo = atomo
 	}
 
@@ -18,7 +20,7 @@ class WindowElement extends Window {
 
 		const div_element = document.createElement('div')
 		div_element.className = "element-container"
-		div_element.style.backgroundColor = this.atomo.cor
+		div_element.style.backgroundColor = Atomo.FiltrarCor(this.atomo)
 
 		div_element.appendChild(div_item)
 		div_element.innerHTML += `<p class="item-shells">${this.atomo.camadas.join('</br>')}</p>`
@@ -27,4 +29,4 @@ class WindowElement extends Window {
 	}
 }
 
-export default WindowElement
+export default WindowElemento

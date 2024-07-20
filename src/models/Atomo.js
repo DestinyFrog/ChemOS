@@ -1,26 +1,65 @@
 import WindowError from "../features/WindowError"
 
+/**
+ * @typedef AtomoData
+ * @prop {string} nome
+ * @prop {number|null} raio_atomico distância do á camadas mais externa de elétrons (nanômetro nm)
+ * @prop {number|null} eletronegatividade tendência á atrair outros elétrons em uma ligação química
+ * @prop {number|null} massa_atomica massa do átomo (unidade de massa atômica 'u')
+ * @prop {string} categoria categorias que dividem elementos pelas suas propriedades físicas e químicas
+ * @prop {number} numero_atomico número atômico
+ * @prop {number} periodo
+ * @prop {number} familia
+ * @prop {string} simbolo
+ * @prop {string} fase estado físico natural do elemento
+ * @prop {number} xpos posição no eixo X da Tabela Periódica
+ * @prop {number} ypos posição no eixo Y da Tabela Periódica
+ * @prop {number[]} camadas elétrons por camada
+ * @prop {string} configuracao_eletronica Configuração Eletrônica no formato escrito
+ */
+
 class Atomo {
-	constructor(d) {
-		this.nome					= d.nome
-		this.raio_atomico			= d.raio_atomico
-		this.eletronegatividade		= d.eletronegatividade
-		this.massa_atomica			= d.massa_atomica
-		this.categoria				= d.categoria
-		this.numero_atomico			= d.numero_atomico
-		this.periodo				= d.periodo
-		this.familia				= d.familia
-		this.simbolo				= d.simbolo
-		this.fase					= d.fase
-		this.xpos					= d.xpos
-		this.ypos					= d.ypos
-		this.camadas				= d.camadas
-		this.configuracao_eletronica= d.configuracao_eletronica
-		this.color					= this.cor
+	/** @type {AtomoData[]} */
+	static data = undefined
+
+	/** Carregar todos os dados dos Átomos
+	 * @returns {Promise<>}
+	 */
+	static async CarregarTodos() {
+		try {
+			const response = await fetch('./atomo.json')
+			Atomo.data = await response.json()
+		}
+		catch (error) { throw error }
 	}
 
-	get cor() {
-		switch(this.categoria) {
+	/** Procurar um Átomo por um termo
+	 * que relaciona 'simbolo' ou 'nome'
+	 * @param {string} termo
+	 * @returns {Promise<AtomoData>}
+	 */
+	static ProcurarPorTermo(termo) {
+		try {
+			const f = Atomo.data.filter(({simbolo, nome}) => simbolo == termo || nome == termo)
+
+			if (f.length == 0)
+				throw new Error('No Atom Found With this Term')
+
+			return f[0]
+		}
+		catch (error) {
+			const w = new WindowError(error)
+			w.Render()
+			return null
+		}
+	}
+
+	/** Transforma o tipo do elemento em uma cor
+	 * @param {AtomoData} atomo
+	 * @returns {string}
+	 */
+	static FiltrarCor(atomo) {
+		switch(atomo.categoria) {
 			case 'gás nobre':				return '#9400d3'
 			case 'metal alcalino':			return '#e5b80b'
 			case 'metal alcalino terroso':	return '#FF6600'
@@ -35,33 +74,6 @@ class Atomo {
 			default:						return '#000000'
 		}
 	}
-
-	static data = null
-	static async StartGlobalData() {
-		try {
-			const response = await fetch('./atomo.json')
-			const data = await response.json()
-			this.data = data.map(d => new Atomo(d))
-		}
-		catch (error) { throw error }
-	}
-
-	static SearchAtom(term) {
-		try {
-			const f = Atomo.data.filter(({simbolo, nome}) => simbolo == term || nome == term)
-
-			if (f.length == 0)
-				throw new Error('No Atom Found With this Term')
-
-			return f[0]
-		}
-		catch (error) {
-			const w = new WindowError(error)
-			w.Render()
-			return null
-		}
-	}
-
 }
 
 export default Atomo

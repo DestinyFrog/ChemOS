@@ -1,45 +1,48 @@
 import Atomo from "../models/Atomo"
-import WindowElemento from "./WindowElement"
+import WindowElemento from "./WindowElemento"
 import './WindowTabelaPeriodica.css'
 import WindowAtomo from "./WindowAtomo"
-import Window from '../features/Window'
+import Window from '../features/Win'
+
+// Maior raio atomico
+const RAIO_ATOMICO_CESIO = 298
 
 class WindowTabelaPeriodica extends Window {
-	_container = document.createElement("div")
-	_tipo = "normal"
-	_tabela = document.createElement('div')
-	_openMenu = false
+	container = document.createElement("div")
+	tipo = "normal"
+	tabela = document.createElement('div')
+	openMenu = false
 
 	constructor() {
 		super("Tabela Periódica")
-		this.position = { x: 10, y: 10 }
+		super.position = { x: 20, y: 10 }
+	}
+
+	Render() {
+		this.tabela.id = "periodic-table"
+		this.container.id = "container-tabela-periodica"
+
+		this.container.appendChild(this.tabela)
+		this.AddToContainer(this.container)
+		this.GerarMenu()
+
+		this.CarregarTabela()
+	}
+
+	LimparTabela() {
+		this.tabela.innerHTML = ''
 	}
 
 	/**
 	 * @param {string} valor
 	*/
-	set tipo(valor) {
-		this._tipo= valor
-		this._CarregarTabela()
+	MudarTipo(valor) {
+		this.tipo= valor
+		this.CarregarTabela()
 	}
 
-	Render() {
-		this._tabela.id = "periodic-table"
-		this._container.id = "container-tabela-periodica"
-
-		this._container.appendChild(this._tabela)
-		this.AddToContainer(this._container)
-		this._GerarMenu()
-
-		this._CarregarTabela()
-	}
-
-	_LimparTabela() {
-		this._tabela.innerHTML = ''
-	}
-
-	_CarregarTabela() {
-		this._LimparTabela()
+	CarregarTabela() {
+		this.LimparTabela()
 
 		for(const atomo of Atomo.data) {
 			const celula = document.createElement('div')
@@ -47,14 +50,15 @@ class WindowTabelaPeriodica extends Window {
 			celula.style.gridRowStart = `${atomo.ypos}`
 			celula.style.gridColumnStart = `${atomo.xpos}`
 			celula.addEventListener('click', _ =>
-				this._AbrirAtomoWindow(atomo) )
+				this.AbrirAtomoWindow(atomo)
+			)
 
-			this._GerarCelula(celula, atomo)
-			this._tabela.appendChild(celula)
+			this.GerarCelula(celula, atomo)
+			this.tabela.appendChild(celula)
 		}
 	}
 
-	_AbrirAtomoWindow(atomo) {
+	AbrirAtomoWindow(atomo) {
 		const w1 = new WindowElemento(atomo)
 		w1.Render()
 
@@ -62,18 +66,18 @@ class WindowTabelaPeriodica extends Window {
 		w2.Render()
 	}
 
-	_GerarCelula(celula, atomo) {
-		switch(this._tipo) {
+	GerarCelula(celula, atomo) {
+		switch(this.tipo) {
 			case 'normal':
 				celula.textContent = atomo.simbolo
-				celula.style.backgroundColor = atomo.cor
+				celula.style.backgroundColor = Atomo.FiltrarCor(atomo)
 				break
 
 			case 'raio_atomico':
 				const r = document.createElement('div')
 				r.className = 'circle'
-				r.style.width = `${100 * (atomo.raio_atomico||0) / 350}%`
-				r.style.backgroundColor = `rgb(255,${Math.floor(255 * (atomo.raio_atomico||0) / 350)},0)`
+				r.style.width = `${100 * (atomo.raio_atomico||0) / RAIO_ATOMICO_CESIO}%`
+				r.style.backgroundColor = `rgb(255,${Math.floor(255 * (atomo.raio_atomico||0) / RAIO_ATOMICO_CESIO)},0)`
 				celula.appendChild(r)
 				break
 
@@ -83,40 +87,40 @@ class WindowTabelaPeriodica extends Window {
 		}
 	}
 
-	_GerarMenu() {
-		const menu = document.createElement('div')
-		menu.id = 'periodic-table-menu'
-		menu.style.display = this._openMenu ? 'flex' : 'none'
+	GerarMenu() {
+		this.menu = document.createElement('div')
+		this.menu.id = 'menu-tabela-periodica'
+		this.menu.style.display = this.openMenu ? 'flex' : 'none'
+
+		this.menu_item_normal = document.createElement('button')
+		this.menu_item_normal.className = 'periodic-table-menu-item'
+		this.menu_item_normal.textContent = 'Normal'
+		this.menu_item_normal.addEventListener('click', () => this.MudarTipo('normal'))
+		this.menu.appendChild( this.menu_item_normal )
+
+		this.menu_item_raio_atomico = document.createElement('button')
+		this.menu_item_raio_atomico.className = 'periodic-table-menu-item'
+		this.menu_item_raio_atomico.textContent = 'Raio Atômico'
+		this.menu_item_raio_atomico.addEventListener('click', () => this.MudarTipo('raio_atomico'))
+		this.menu.appendChild( this.menu_item_raio_atomico )
+
+		this.menu_item_eletronegatividade = document.createElement('button')
+		this.menu_item_eletronegatividade.className = 'periodic-table-menu-item'
+		this.menu_item_eletronegatividade.textContent = 'Eletronegatividade'
+		this.menu_item_eletronegatividade.addEventListener('click', () => this.MudarTipo('eletronegatividade') )
+		this.menu.appendChild( this.menu_item_eletronegatividade )
 
 		const hide_button = document.createElement('button')
+		hide_button.id = 'hide-button'
 		hide_button.textContent = '>'
 		hide_button.addEventListener('click', _ => {
-			this._openMenu = !this._openMenu
-			menu.style.display = this._openMenu ? 'flex' : 'none'
-			hide_button.textContent = this._openMenu ? '<' : '>'
+			this.openMenu = !this.openMenu
+			this.menu.style.display = this.openMenu ? 'flex' : 'none'
+			hide_button.textContent = this.openMenu ? '<' : '>'
 		})
-		this._container.appendChild(hide_button)
 
-		const menu_item_normal= document.createElement('button')
-		menu_item_normal.className = 'periodic-table-menu-item'
-		menu_item_normal.textContent = 'Normal'
-		menu_item_normal.addEventListener('click', () => this.tipo = 'normal')
-		menu.appendChild( menu_item_normal )
-
-		const menu_item_raio_atomico = document.createElement('button')
-		menu_item_raio_atomico.className = 'periodic-table-menu-item'
-		menu_item_raio_atomico.textContent = 'Raio Atômico'
-		menu_item_raio_atomico.addEventListener('click', () => this.tipo = 'raio_atomico')
-		menu.appendChild( menu_item_raio_atomico )
-
-		const menu_item_eletronegatividade= document.createElement('button')
-		menu_item_eletronegatividade.className = 'periodic-table-menu-item'
-		menu_item_eletronegatividade.textContent = 'Eletronegatividade'
-		menu_item_eletronegatividade.addEventListener('click', () => this.tipo = 'eletronegatividade')
-		menu.appendChild( menu_item_eletronegatividade )
-
-		this.AddToContainer(menu)
-		this._container.appendChild(menu)
+		this.container.appendChild(hide_button)
+		this.container.appendChild(this.menu)
 	}
 }
 

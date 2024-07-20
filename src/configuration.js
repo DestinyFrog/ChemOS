@@ -1,42 +1,13 @@
 // Util
-export const CIRCUFERENCE = Math.PI*2
-
-// Eletron Configuration
-export const ELETRONS_SPEED_LEVELS = [0, 1, 2, 5, 10]
-
-export const ELETRON_RADIUS = 3
-export const ELETRON_SPEED = 0.03
-export const ELETRON_LAYER_COLOR = '#FFFFFF33'
-export const ELETRON_COLOR = '#0000ff'
-
-export const ELETRON_RADIUS_3D = 3
-export const ELETRON_SPEED_3D = 0.03
-export const ELETRON_LAYER_COLOR_3D = '#FFFFFF33'
-export const ELETRON_COLOR_3D = '#0000ff'
-
-// Proton Configuration
-export const PROTON_RADIUS = 3
-export const PROTON_COLOR = "#FF0000"
-
-export const PROTON_RADIUS_3D = 3
-export const PROTON_COLOR_3D = "#FF0000"
-
-// Canvas Configuration
-export const CANVAS_BACKGROUND_COLOR = "#000000BB"
-
-//? questionable
-export const NUCLEUM_RADIUS = 10
-
-// Frames
-export const DELAY = 40
+export const CIRCUFERENCIA = Math.PI*2
 
 /**
- * Change each first letter of word into a Upper Case
+ * Altera para maiúsculo a primeira letra da cada palavra
  * @param {string} text
  * @return {string}
  */
-export function Capitalize(text) {
-	return text.split(' ').map(d => {
+export function Capitalize(texto) {
+	return texto.split(' ').map(d => {
 		if ( ['de'].includes(d) ) return d
 		const e = d.split('')
 		e[0] = e[0].toUpperCase()

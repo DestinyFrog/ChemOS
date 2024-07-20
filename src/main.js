@@ -6,7 +6,7 @@ import './style.css'
 ( async () => {
 
 	try {
-		await Atomo.StartGlobalData()
+		await Atomo.CarregarTodos()
 	}
 	catch (err) {
 		const w = new WindowError(err)

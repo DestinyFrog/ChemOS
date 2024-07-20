@@ -1,12 +1,4 @@
 
-#periodic-table-menu {
-	display: flex;
-	flex-direction: column;
-}
-
-#periodic-table-menu * {
-	width: 200px;
-}
 
 #periodic-table {
 	display: grid;
@@ -20,20 +12,43 @@
 }
 
 .periodic-table-element {
-	border: 1px solid aliceblue;
+	border: 1px solid #555;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 3px;
+	/* padding: 3px; */
 
 	font-size: 16px;
 
-	height: 34px;
-	width: 34px;
+	height: 32px;
+	aspect-ratio: 1/1;
 }
 
 .circle {
 	border-radius: 50%;
 	aspect-ratio: 1/1;
+}
+
+#menu-tabela-periodica {
+	width: 160px;
+	display: flex;
+	flex-direction: column;
+	background-color: #444;
+}
+
+#hide-button {
+	width: 25px;
+	min-height: 100%;
+	background-color: #222;
+	border: 0;
+}
+
+.periodic-table-menu-item {
+	background-color: transparent;
+	border: 0;
+}
+
+.periodic-table-menu-item:hover {
+	background-color: #222;
 }
