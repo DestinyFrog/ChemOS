@@ -1,10 +1,12 @@
 import Win from "../features/Win"
+import { Capitalize } from "../configuration"
 
 class WindowLinusPauling extends Win {
-	OFFSET = 26
-	UNIT = 30
+	BORDA = 26
+	UNIDADE = 30
 
-	diagram = [
+	camadas = [ 'K', 'L', 'M', 'N', 'O', 'P', 'Q' ]
+	diagramas = [
 		{
 			min: 1,
 			max: 7,
@@ -31,18 +33,21 @@ class WindowLinusPauling extends Win {
 		}
 	]
 
-	camadas = [ 'K', 'L', 'M', 'N', 'O', 'P', 'Q' ]
-
-	constructor() {
-		super("Diagrama Linus Pauling")
+	/**
+	 * @param {import("../models/Atomo").AtomoData} atomo
+	*/
+	constructor(atomo=null) {
+		super("Diagrama de Linus Pauling" + (atomo ? ("- "+ Capitalize(atomo.nome) ) : "") )
 
 		const canvas = document.createElement('canvas')
 		this.AddToContainer(canvas)
 
-		this.WIDTH = this.OFFSET*2 + this.UNIT*5
-		this.HEIGHT = this.OFFSET*2 + this.UNIT*7
-		canvas.width = this.WIDTH
-		canvas.height = this.HEIGHT
+		this.atomo = atomo
+
+		this.LARGURA = this.BORDA * 2 + this.UNIDADE * 5
+		this.ALTURA = this.BORDA * 2 + this.UNIDADE * 7
+		canvas.width = this.LARGURA
+		canvas.height = this.ALTURA
 
 		this.ctx = canvas.getContext('2d')
 		this.ctx.lineWidth = 2
@@ -50,45 +55,74 @@ class WindowLinusPauling extends Win {
 	}
 
 	Render() {
-		this.Desenhar()
-	}
+		// limpar tela
+		this.ctx.clearRect(0,0,this.LARGURA,this.ALTURA)
 
-	Desenhar() {
-		this.ctx.clearRect(0,0,this.WIDTH,this.HEIGHT)
+		this._Desenhar_Setas()
+		this._Desenhar_Diagrama()
+		this._Desenhar_Letras()
 
-		this.Desenhar_Linhas()
-
-		this.ctx.fillStyle = "#fff"
-		this.diagram.forEach((d, idx) => {
-			for (let i = d.min; i <= d.max; i++) {
-				const txt = `${i}${d.sublevel}`
-
-				this.ctx.font = (this.UNIT-12).toString()+'px Arial'
-				this.ctx.fillText(txt, this.OFFSET+ (idx+1)*this.UNIT+6, this.OFFSET+ i*this.UNIT -3)
-
-				this.ctx.font = (this.UNIT-20).toString()+'px Arial'
-				this.ctx.fillText(d.eletrons.toString(), this.OFFSET+ (idx+1)*this.UNIT + (this.UNIT-6), this.OFFSET+ (i-1)*this.UNIT + 16 )
-			}
-		})
-
-		for (let i = 0; i < this.camadas.length; i++) {
-			this.ctx.font = (this.UNIT-14).toString()+'px Arial'
-			this.ctx.fillText( this.camadas[i], this.OFFSET + 8, (1+i)*this.UNIT + this.OFFSET - 3 )
+		if (this.atomo) {
+			const legenda = document.createElement('p')
+			legenda.textContent = this.atomo.configuracao_eletronica
+			this.AddToFooter(legenda)
 		}
 	}
 
-	Desenhar_Linhas() {
+	_Desenhar_Diagrama() {
+		let configuracao_eletronica = null
+		if (this.atomo) {
+			const l = this.atomo.configuracao_eletronica.split(' ')
+			configuracao_eletronica = l[l.length-1]
+		}
+
+		this.diagramas.forEach((diagrama, idx) => {
+			for (let i = diagrama.min; i <= diagrama.max; i++) {
+				this.ctx.fillStyle = '#fff'
+
+				if (configuracao_eletronica) {
+					const txt = `${i}${diagrama.sublevel}`
+					if (configuracao_eletronica.includes(txt)) {
+						this.ctx.fillStyle = '#0f0'
+					}
+				}
+
+				this.ctx.font = (this.UNIDADE-12).toString()+'px Arial'
+				const ax = this.BORDA + this.UNIDADE * (idx+1) + 6 
+				const ay = this.BORDA + this.UNIDADE * i - 6
+				this.ctx.fillText(`${i}${diagrama.sublevel}`, ax, ay)
+	
+				this.ctx.font = (this.UNIDADE-20).toString()+'px Arial'
+				const bx = this.BORDA + this.UNIDADE * (idx+1) + (this.UNIDADE-4)
+				const by = this.BORDA + this.UNIDADE * (i-1) + 16
+				this.ctx.fillText(diagrama.eletrons.toString(), bx, by)
+			}
+		})
+	}
+
+	_Desenhar_Letras() {
+		this.ctx.font = (this.UNIDADE-14).toString()+'px Arial'
+
+		this.camadas.forEach((camada, i) => {
+			this.ctx.fillStyle = '#fff'
+			const x = this.BORDA + 8
+			const y = this.BORDA + this.UNIDADE*(i+1) - 3
+			this.ctx.fillText(camada, x, y)
+		})
+	}
+
+	_Desenhar_Setas() {
 		// desenhar linhas
 		this.ctx.strokeStyle = '#444'
 
 		for (let i = 0; i <= 6; i++) {
-			this.ctx.moveTo( this.OFFSET+ this.UNIT*(Math.floor(i/2+0.1)+2), this.OFFSET + this.UNIT*Math.ceil(i/2) )
-			this.ctx.lineTo( this.OFFSET+this.UNIT, this.OFFSET + this.UNIT*(i+1) )
+			this.ctx.moveTo( this.BORDA+ this.UNIDADE*(Math.floor(i/2+0.1)+2), this.BORDA + this.UNIDADE*Math.ceil(i/2) )
+			this.ctx.lineTo( this.BORDA+this.UNIDADE, this.BORDA + this.UNIDADE*(i+1) )
 			this.ctx.closePath()
 		}
 
-		this.ctx.moveTo( this.OFFSET+this.UNIT*5, this.OFFSET + this.UNIT*4 )
-		this.ctx.lineTo( this.OFFSET+this.UNIT*2, this.OFFSET + this.UNIT*7 )
+		this.ctx.moveTo( this.BORDA+this.UNIDADE*5, this.BORDA + this.UNIDADE*4 )
+		this.ctx.lineTo( this.BORDA+this.UNIDADE*2, this.BORDA + this.UNIDADE*7 )
 		this.ctx.closePath()
 
 		this.ctx.stroke()
@@ -99,14 +133,14 @@ class WindowLinusPauling extends Win {
 		this.ctx.fillStyle = "#444"
 
 		for (let b = 1; b < 8; b++) {
-			this.ctx.moveTo( this.OFFSET+this.UNIT, this.OFFSET+this.UNIT*b )
-			this.ctx.lineTo( this.OFFSET+this.UNIT, this.OFFSET+this.UNIT*b-a )
-			this.ctx.lineTo( this.OFFSET+this.UNIT+a, this.OFFSET+this.UNIT*b )
+			this.ctx.moveTo( this.BORDA+this.UNIDADE, this.BORDA+this.UNIDADE*b )
+			this.ctx.lineTo( this.BORDA+this.UNIDADE, this.BORDA+this.UNIDADE*b-a )
+			this.ctx.lineTo( this.BORDA+this.UNIDADE+a, this.BORDA+this.UNIDADE*b )
 		}
 
-		this.ctx.moveTo( this.OFFSET+this.UNIT*2, this.OFFSET+this.UNIT*7 )
-		this.ctx.lineTo( this.OFFSET+this.UNIT*2, this.OFFSET+this.UNIT*7-a )
-		this.ctx.lineTo( this.OFFSET+this.UNIT*2+a, this.OFFSET+this.UNIT*7 )
+		this.ctx.moveTo( this.BORDA+this.UNIDADE*2, this.BORDA+this.UNIDADE*7 )
+		this.ctx.lineTo( this.BORDA+this.UNIDADE*2, this.BORDA+this.UNIDADE*7-a )
+		this.ctx.lineTo( this.BORDA+this.UNIDADE*2+a, this.BORDA+this.UNIDADE*7 )
 
 		this.ctx.closePath()
 		this.ctx.fill()
