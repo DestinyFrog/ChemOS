@@ -68,6 +68,33 @@
 			}
 		]
 	},
+	{ "nome": "cátion amônio",
+	"formula": "NH_4",
+	"atomos": [
+			{
+				"simbolo": "N+",
+				"geometria": "tetraédrica",
+				"ligacoes": [
+					{"para":1, "eletrons":1},
+					{"para":2, "eletrons":1},
+					{"para":3, "eletrons":1},
+					{"para":4, "eletrons":1}
+				]
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			},
+			{
+				"simbolo": "H"
+			}
+		]
+	},
 	{ "nome": "trifluoreto de nitrogênio",
 	"formula": "NF_3",
 	"atomos": [
