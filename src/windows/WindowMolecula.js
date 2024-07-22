@@ -1,4 +1,4 @@
-import { Capitalize, CIRCUFERENCIA, GrauParaRadiano } from "../configuration"
+import { Capitalize, GrauParaRadiano } from "../configuration"
 import Win from "../features/Win"
 
 class WindowMolecula extends Win {
