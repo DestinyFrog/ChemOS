@@ -14,3 +14,11 @@ export function Capitalize(texto) {
 		return e.join('')
 	} ).join(' ')
 }
+
+/**
+ * Converte Graus para Radianos
+ * @param {number} grau 
+ */
+export function GrauParaRadiano(grau) {
+	return grau / 180 * Math.PI
+}
