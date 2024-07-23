@@ -1,6 +1,5 @@
 import Win from "../features/Win"
 import Atomo from "../models/Atomo"
-import WindowAtomo from "./WindowAtomo"
 import WindowElemento from "./WindowElemento"
 
 class WindowSearchAtom extends Win {
