@@ -5,10 +5,14 @@ class Win {
 	drag_position = { x:0, y:0} 
 	before_drag_position = { x:0, y:0}
 
+	static wins = []
+
 	Render() {}
 	Destroy() {}
 
 	constructor(title) {
+		this._indice = Win.wins.push(this)
+
 		const app = document.querySelector('#app')
 
 		this.div_window = document.createElement('div')
@@ -89,6 +93,7 @@ class Win {
 	Close() {
 		this.Destroy()
 		this.div_window.remove()
+		delete Win.wins[this._indice]
 	}
 
 	set position ({x, y}) {
@@ -108,6 +113,10 @@ class Win {
 			width: this.div_window.clientWidth,
 			height: this.div_window.clientHeight
 		}
+	}
+
+	Centralize() {
+		this.div_container.classList.add('centralize')
 	}
 
 	AddToContainer(el) {
