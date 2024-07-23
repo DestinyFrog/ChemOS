@@ -47,3 +47,14 @@ button {
 	padding: 4px;
 	border-radius: 0;
 }
+
+.centralizado {
+	position: fixed;
+	transform: translate( -50%, -50% );
+	top: 50%;
+	left: 50%;
+}
+
+input, button {
+	outline: none;
+}
