@@ -6,6 +6,7 @@ import WindowElemento from "./WindowElemento"
 class WindowSearchAtom extends Win {
 	constructor() {
 		super("Procure por um Átomo")
+		super.Centralize()
 	}
 
 	Render() {
@@ -47,18 +48,10 @@ class WindowSearchAtom extends Win {
 	 * @param {string} atomo
 	 */
 	redirecionar_elemento(atomo) {
+		const w = new WindowElemento(atomo)
+		w.Render()
+
 		super.Close()
-
-		const w2 = new WindowElemento(atomo)
-		w2.Render()
-
-		const w1 = new WindowAtomo(atomo)
-		w1.position = {
-			x: w2.position.x + w2.size.width,
-			y: w2.position.y
-		}
-
-		w1.Render()
 	}
 }
 

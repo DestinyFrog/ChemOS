@@ -59,11 +59,8 @@ class WindowTabelaPeriodica extends Window {
 	}
 
 	AbrirAtomoWindow(atomo) {
-		const w1 = new WindowElemento(atomo)
-		w1.Render()
-
-		const w2 = new WindowAtomo(atomo)
-		w2.Render()
+		const w = new WindowElemento(atomo)
+		w.Render()
 	}
 
 	GerarCelula(celula, atomo) {
