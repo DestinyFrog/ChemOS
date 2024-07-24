@@ -15,7 +15,7 @@ class WindowElemento extends Win {
 		this.atomo = atomo
 	}
 
-	Render() {
+	Renderizar() {
 		const { numero_atomico, simbolo, nome, massa_atomica, camadas } = this.atomo
 
 		const div_item = document.createElement('div')
@@ -47,12 +47,12 @@ class WindowElemento extends Win {
 
 	_AbrirJanela() {
 		const w = new WindowLinusPauling(this.atomo)
-		w.Render()
+		w.Renderizar()
 	}
 
 	_AbrirVisualizaçao() {
 		const w = new WindowAtomo(this.atomo)
-		w.Render()
+		w.Renderizar()
 	}
 }
 

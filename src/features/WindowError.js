@@ -7,7 +7,7 @@ class WindowError extends Window {
 		this.err = err
 	}
 
-	Render() {
+	Renderizar() {
 		const log = document.createElement('h4')
 		log.className = "log-error"
 		log.textContent = `${this.err.name}: ${this.err.message}`

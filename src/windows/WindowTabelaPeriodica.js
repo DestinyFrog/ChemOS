@@ -18,7 +18,7 @@ class WindowTabelaPeriodica extends Window {
 		super.position = { x: 20, y: 10 }
 	}
 
-	Render() {
+	Renderizar() {
 		this.tabela.id = "periodic-table"
 		this.container.id = "container-tabela-periodica"
 
@@ -60,7 +60,7 @@ class WindowTabelaPeriodica extends Window {
 
 	AbrirAtomoWindow(atomo) {
 		const w = new WindowElemento(atomo)
-		w.Render()
+		w.Renderizar()
 	}
 
 	GerarCelula(celula, atomo) {

@@ -9,7 +9,7 @@ class Header {
 	_header = document.getElementById('header')
 	_img_logo = document.createElement('img')
 
-	Render() {
+	Renderizar() {
 		this._img_logo.id = 'logo'
 		this._img_logo.src = logo
 		this._header.appendChild(this._img_logo)
@@ -26,7 +26,7 @@ class Header {
 		botao.textContent = nome
 		botao.addEventListener('click', _ => {
 			const w = new window()
-			w.Render()
+			w.Renderizar()
 		})
 
 		this._header.appendChild(botao)

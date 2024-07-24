@@ -9,7 +9,7 @@ class WindowSearchMolecula extends Window {
 		super("Procure por uma Molécula")
 	}
 
-	Render() {
+	Renderizar() {
 		const searchDialog = document.createElement('div')
 		searchDialog.id = 'dialog-search-molecula'
 		searchDialog.style.padding = '10px'
@@ -75,7 +75,7 @@ class WindowSearchMolecula extends Window {
 		const molecula = await Molecula.SearchFor(molecula_txt)
 
 		const w1 = new WindowMolecula(molecula)
-		w1.Render()
+		w1.Renderizar()
 	}
 }
 

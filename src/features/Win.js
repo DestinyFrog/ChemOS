@@ -7,8 +7,8 @@ class Win {
 
 	static wins = []
 
-	Render() {}
-	Destroy() {}
+	Renderizar() {}
+	Destruir() {}
 
 	constructor(title) {
 		this._indice = Win.wins.push(this)
@@ -91,7 +91,7 @@ class Win {
 	}
 
 	Close() {
-		this.Destroy()
+		this.Destruir()
 		this.div_window.remove()
 		delete Win.wins[this._indice]
 	}

@@ -54,7 +54,7 @@ class WindowLinusPauling extends Win {
 		this.ctx.textAlign = 'left'
 	}
 
-	Render() {
+	Renderizar() {
 		// limpar tela
 		this.ctx.clearRect(0,0,this.LARGURA,this.ALTURA)
 

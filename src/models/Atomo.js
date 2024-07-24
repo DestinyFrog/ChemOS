@@ -49,7 +49,7 @@ class Atomo {
 		}
 		catch (error) {
 			const w = new WindowError(error)
-			w.Render()
+			w.Renderizar()
 			return null
 		}
 	}

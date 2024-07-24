@@ -8,7 +8,7 @@ class WindowSearchAtom extends Win {
 		super.Centralize()
 	}
 
-	Render() {
+	Renderizar() {
 		const searchDialog = document.createElement('div')
 		searchDialog.id = 'dialog-search-atom'
 		searchDialog.style.padding = '10px'
@@ -48,7 +48,7 @@ class WindowSearchAtom extends Win {
 	 */
 	redirecionar_elemento(atomo) {
 		const w = new WindowElemento(atomo)
-		w.Render()
+		w.Renderizar()
 
 		super.Close()
 	}

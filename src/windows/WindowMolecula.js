@@ -14,7 +14,7 @@ class WindowMolecula extends Win {
 		"tetraédrica": [270, 170, ['f',70], ['t',25] ],
 		"piramidal": [170, ['f',70], ['t',25]],
 		"trigonal plana": [30, 150, 270],
-		"angular V": [80, 190],
+		"angular V": [135, 45],
 		"angular": [149.6, 30,4],
 		"linear": [ 0, 180],
 		"binaria": [ 180 ]
@@ -25,7 +25,7 @@ class WindowMolecula extends Win {
 		this.data = data
 	}
 
-	Render() {
+	Renderizar() {
 		this.canvas = document.createElement('canvas')
 		this.AddToContainer(this.canvas)
 
@@ -58,7 +58,7 @@ class WindowMolecula extends Win {
 				atomo.pai = pai
 				atomo.ligacao = pai?.ligacoes[ordem]
 
-				atomo.angulo = (pai?.angulo || 0) + GrauParaRadiano(angulo_ligacao) * (pai?.angulo > Math.PI ? -1 : 1)
+				atomo.angulo = GrauParaRadiano(angulo_ligacao) * (pai?.angulo > Math.PI ? -1 : 1)
 
 				atomo.pos = {
 					x: (pai?.pos.x || 0) + Math.cos(atomo.angulo) * (camada > 0 ? this.raio : 0),

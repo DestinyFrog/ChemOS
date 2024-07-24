@@ -38,7 +38,7 @@ class WindowAtomo extends Win {
 		this.CENTRO = { x: this.LARGURA/2, y: this.ALTURA/2 }
 	}
 
-	Render() {
+	Renderizar() {
 		const canvas = document.createElement('canvas')
 		this.AddToContainer(canvas)
 
