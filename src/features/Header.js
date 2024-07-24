@@ -2,7 +2,6 @@ import WindowSearchAtomo from "../windows/WindowSearchAtomo"
 import WindowLinusPauling from "../windows/WindowLinusPauling"
 import WindowTabelaPeriodica from '../windows/WindowTabelaPeriodica'
 import "./Header.css"
-import logo from './logo.svg'
 import WindowSearchMolecula from "../windows/WindowSearchMolecula"
 
 class Header {
@@ -11,7 +10,7 @@ class Header {
 
 	Renderizar() {
 		this._img_logo.id = 'logo'
-		this._img_logo.src = logo
+		this._img_logo.src = 'logo.svg'
 		this._header.appendChild(this._img_logo)
 
 		this._GerarBotaoMenu(WindowSearchAtomo,			'Átomo')
