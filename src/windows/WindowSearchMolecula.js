@@ -28,7 +28,7 @@ class WindowSearchMolecula extends Window {
 
 		input.addEventListener('input', _ => {
 			const txt = input.value
-			Molecula.SearchForMany(txt)
+			Molecula.ProcurarPorTermo(txt)
 			.then( data => {
 				recomendation.innerHTML = ""
 
@@ -41,7 +41,6 @@ class WindowSearchMolecula extends Window {
 						input.value = nome
 					} )
 					recomendation.appendChild(line)
-					
 				})
 			} )
 		})
@@ -72,7 +71,7 @@ class WindowSearchMolecula extends Window {
 	async _RedirectMolecula(molecula_txt) {
 		super.Close()
 
-		const molecula = await Molecula.SearchFor(molecula_txt)
+		const molecula = await Molecula.ProcurarUmPorTermo(molecula_txt)
 
 		const w1 = new WindowMolecula(molecula)
 		w1.Renderizar()

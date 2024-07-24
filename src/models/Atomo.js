@@ -33,6 +33,18 @@ class Atomo {
 		catch (error) { throw error }
 	}
 
+	/** Pegar todos 
+	 * @returns {Promise<AtomoData[]>}
+	 */
+	static async EncontrarTodos() {
+		try {
+			const response = await fetch('./atomo.json')
+			const data = await response.json()
+			return data
+		}
+		catch (error) { throw error }
+	}
+
 	/** Procurar um Átomo por um termo
 	 * que relaciona 'simbolo' ou 'nome'
 	 * @param {string} termo
