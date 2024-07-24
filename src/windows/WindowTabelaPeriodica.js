@@ -18,7 +18,7 @@ class WindowTabelaPeriodica extends Window {
 		super.position = { x: 20, y: 10 }
 	}
 
-	Renderizar() {
+	async Renderizar() {
 		this.tabela.id = "periodic-table"
 		this.container.id = "container-tabela-periodica"
 
@@ -26,6 +26,7 @@ class WindowTabelaPeriodica extends Window {
 		this.AddToContainer(this.container)
 		this.GerarMenu()
 
+		this.atomos = await Atomo.EncontrarTodos()
 		this.CarregarTabela()
 	}
 
@@ -44,7 +45,7 @@ class WindowTabelaPeriodica extends Window {
 	CarregarTabela() {
 		this.LimparTabela()
 
-		for(const atomo of Atomo.data) {
+		for( const atomo of this.atomos) {
 			const celula = document.createElement('div')
 			celula.className = "periodic-table-element"
 			celula.style.gridRowStart = `${atomo.ypos}`

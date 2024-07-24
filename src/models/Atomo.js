@@ -19,20 +19,6 @@ import WindowError from "../features/WindowError"
  */
 
 class Atomo {
-	/** @type {AtomoData[]} */
-	static data = undefined
-
-	/** Carregar todos os dados dos Átomos
-	 * @returns {Promise<>}
-	 */
-	static async CarregarTodos() {
-		try {
-			const response = await fetch('./atomo.json')
-			Atomo.data = await response.json()
-		}
-		catch (error) { throw error }
-	}
-
 	/** Pegar todos 
 	 * @returns {Promise<AtomoData[]>}
 	 */
@@ -50,9 +36,10 @@ class Atomo {
 	 * @param {string} termo
 	 * @returns {Promise<AtomoData>}
 	 */
-	static ProcurarPorTermo(termo) {
+	static async ProcurarPorTermo(termo) {
 		try {
-			const f = Atomo.data.filter(({simbolo, nome}) => simbolo == termo || nome == termo)
+			const data = await Atomo.EncontrarTodos()
+			const f = data.filter(({simbolo, nome}) => simbolo == termo || nome == termo)
 
 			if (f.length == 0)
 				throw new Error('No Atom Found With this Term')

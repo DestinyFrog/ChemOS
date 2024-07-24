@@ -26,7 +26,7 @@ class WindowSearchAtom extends Win {
 				throw new Error('Input is NULL')
 
 			const termo = input.value
-			const atomo = Atomo.ProcurarPorTermo(termo)
+			const atomo = await Atomo.ProcurarPorTermo(termo)
 
 			if (atomo == null)
 				return
